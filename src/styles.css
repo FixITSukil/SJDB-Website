@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: "DM Sans", sans-serif;
+    color: #152e45;
+    background: #fff;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    font-feature-settings:
+      "kern" 1,
+      "liga" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px;
+  }
+  body {
+    margin: 0;
+    min-width: 320px;
+  }
+  ::selection {
+    background: #dcecf2;
+    color: #152e45;
+  }
+  :focus-visible {
+    outline: 3px solid #1e6182;
+    outline-offset: 5px;
+  }
+  button,
+  a,
+  input,
+  select,
+  textarea,
+  summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button {
+    cursor: pointer;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: "Manrope", sans-serif;
+    text-wrap: balance;
+  }
+  h2 {
+    font-size: clamp(1.9rem, 3.1vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.045em;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  dialog::backdrop {
+    background: #102638c7;
+  }
+}
+
+@layer components {
+  .site-container {
+    @apply mx-auto w-full max-w-[1280px] px-6 sm:px-10 lg:px-12;
+  }
+  .section-space {
+    @apply py-16 lg:py-24;
+  }
+  .eyebrow {
+    @apply flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[.14em] text-brand sm:text-[11px];
+  }
+  .hero-title {
+    font-size: clamp(2.65rem, 4.5vw, 4rem);
+    @apply font-display font-semibold leading-[1.11] tracking-[-.055em];
+  }
+  .button-primary {
+    @apply inline-flex min-h-12 items-center justify-center gap-4 bg-ink px-6 py-4 text-[13px] font-semibold text-white transition-colors hover:bg-brand;
+  }
+  .button-outline {
+    @apply inline-flex min-h-12 items-center justify-center gap-3 border border-ink/25 px-6 py-4 text-[13px] font-semibold text-ink transition-colors hover:border-brand hover:bg-white;
+  }
+  .nav-link {
+    @apply relative flex min-h-11 items-center text-ink/75 transition-colors hover:text-brand;
+  }
+  .language-button {
+    @apply min-h-11 min-w-11 text-muted transition-colors hover:text-ink;
+  }
+  .language-button.is-active {
+    @apply text-ink;
+  }
+  .section-heading {
+    @apply mb-10 grid items-end gap-6 lg:grid-cols-[1.15fr_1fr] lg:gap-20;
+  }
+  .section-description {
+    @apply max-w-[46ch] text-[15px] leading-[1.65] text-muted;
+  }
+  .service-tab {
+    @apply min-h-11 border border-transparent px-4 py-3 text-xs font-medium text-muted transition-colors hover:bg-mist;
+  }
+  .service-tab.is-active {
+    @apply border-ink bg-ink text-white;
+  }
+  .service-card {
+    @apply flex flex-col border border-ink/15 bg-white p-6 transition-colors hover:border-brand/50 hover:bg-[#fafcfd];
+    animation: card-enter 0.35s ease-out;
+  }
+  .project-filter {
+    @apply min-h-11 rounded-full border border-ink/15 px-5 py-2 text-xs font-medium text-muted transition-colors hover:border-ink;
+  }
+  .project-filter.is-active {
+    @apply border-ink bg-ink text-white;
+  }
+  .faq-item {
+    @apply border-b border-ink/15;
+  }
+  .faq-item:first-child {
+    @apply border-t;
+  }
+  .faq-item[open] summary svg {
+    transform: rotate(180deg);
+  }
+  .contact-icon {
+    @apply grid h-11 w-11 shrink-0 place-items-center border border-ink/15 text-xl text-brand;
+  }
+  .contact-link {
+    @apply text-[15px] font-medium transition-colors hover:text-brand;
+  }
+  .form-label {
+    @apply block text-xs font-medium text-ink;
+  }
+  .form-input {
+    @apply mt-2 block min-h-12 w-full rounded-none border border-ink/20 bg-white px-4 py-3 text-sm font-normal text-ink transition-colors placeholder:text-muted/70 hover:border-ink/40 focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand;
+  }
+  .whatsapp-float {
+    @apply fixed bottom-20 right-5 z-30 flex min-h-14 min-w-14 items-center justify-center gap-3 rounded-full border-4 border-white bg-[#176947] p-3 text-white shadow-[0_4px_24px_#10263830] transition-transform hover:-translate-y-1 hover:bg-[#105738] sm:bottom-6 sm:right-7 sm:px-5;
+  }
+  .project-dialog {
+    @apply m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-[850px] overflow-auto border-0 bg-transparent p-0 text-ink;
+  }
+  .skip-link {
+    @apply fixed left-4 top-4 z-50 -translate-y-24 bg-ink px-5 py-3 text-sm text-white focus:translate-y-0;
+  }
+}
+
+[data-reveal] {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal].is-visible {
+    animation: card-enter 0.65s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+  }
+  .hero-title {
+    animation: card-enter 0.7s ease-out both;
+  }
+}
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 639px) {
+  .form-input {
+    font-size: 16px;
+  }
+  .hero-title {
+    font-size: clamp(2.5rem, 9.8vw, 3.7rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
