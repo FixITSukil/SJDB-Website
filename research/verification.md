@@ -17,6 +17,7 @@ Story: A visitor explores SJDB services and work, selects a service, and contact
 - Initial HTML includes readable page content when JavaScript is disabled.
 - PDF download returns HTTP 200 and is 8,572,818 bytes. PDF verification retained all 22 pages, identical extracted text and page dimensions; representative pages were visually inspected.
 - `npm audit --omit=dev` reports zero vulnerabilities in production dependencies.
+- GitHub Pages subdirectory simulation passed: relative assets and the PDF resolve under `/SJDB-Website/`, both languages persist, and optional `SITE_URL` generates correct absolute canonical/sharing metadata.
 
 ## Practical limits
 

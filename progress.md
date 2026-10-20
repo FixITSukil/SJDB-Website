@@ -6,4 +6,4 @@
 - Prerendered the production HTML, self-hosted fonts and images, and reduced the profile PDF from 84 MB to 8.6 MB.
 - Verified the production build and browser flows. See `research/verification.md`.
 - Prepared GitHub Pages deployment on pushes to `main` or a manual workflow run, using Node.js 22 and the prerendered `dist/` output. Relative asset paths support a repository subdirectory; the build can use `SITE_URL` for production sharing metadata.
-- Local preview and repository workflow are ready. Repository creation, visibility, Pages setup and the first successful public deployment still need confirmation. A custom domain has not been configured.
+- Created the private `FixITSukil/SJDB-Website` GitHub repository and prepared the `main` branch for sharing. The account's current plan does not support Pages for a private repository. The workflow builds private source and deploys Pages only for a public repository. Repository visibility preference is pending; a public preview and custom domain are not configured.

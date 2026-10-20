@@ -2,6 +2,8 @@
 
 A responsive English/Bahasa Melayu landing page for SJDB Management and Services (M) Sdn Bhd and SJDB Facilities Resources. Built with React, TypeScript, Vite and Tailwind CSS. Fonts, logo, photographs and the downloadable company profile are served locally.
 
+Repository: [FixITSukil/SJDB-Website](https://github.com/FixITSukil/SJDB-Website). It is private by default. The current GitHub plan requires a public repository for GitHub Pages; until that sharing choice is made, the workflow builds and validates the private source while skipping Pages deployment.
+
 ![SJDB landing page preview](docs/preview.png)
 
 ## Run locally
