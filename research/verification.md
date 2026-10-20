@@ -18,10 +18,12 @@ Story: A visitor explores SJDB services and work, selects a service, and contact
 - PDF download returns HTTP 200 and is 8,572,818 bytes. PDF verification retained all 22 pages, identical extracted text and page dimensions; representative pages were visually inspected.
 - `npm audit --omit=dev` reports zero vulnerabilities in production dependencies.
 - GitHub Pages subdirectory simulation passed: relative assets and the PDF resolve under `/SJDB-Website/`, both languages persist, and optional `SITE_URL` generates correct absolute canonical/sharing metadata.
+- Public repository and Pages publishing are enabled. [GitHub Actions run 39374180708](https://github.com/FixITSukil/SJDB-Website/actions/runs/39374180708) completed both build and deployment successfully.
+- Live HTTPS verification returned HTTP 200 and confirmed every site image, the 8,572,818-byte PDF, canonical and sharing metadata, both call targets, WhatsApp message preparation, project dialog, mobile navigation, and EN/BM persistence. No browser runtime errors were recorded. Mobile layouts had no horizontal overflow at 320, 390 and 768 pixels.
 
 ## Practical limits
 
 - Call/email handlers, actual WhatsApp account availability and message receipt depend on the visitor's device and SJDB's accounts. Real outbound messages were not sent during testing.
-- The site is ready locally and has not been deployed to a public domain. Canonical/sharing URLs should be set when that domain is chosen.
+- The public GitHub Pages site is deployed at https://fixitsukil.github.io/SJDB-Website/ with absolute canonical/sharing URLs generated during the build. A custom domain is not configured.
 - Tests used Chromium emulation, not physical devices or every browser.
 - The full dependency audit flags advisories in Tailwind 3's build-time glob/selector dependencies. They are absent from the production runtime; the build reads repository-owned patterns and CSS. Tailwind 3 was retained to follow the project conventions.

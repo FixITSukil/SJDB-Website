@@ -2,7 +2,7 @@
 
 A responsive English/Bahasa Melayu landing page for SJDB Management and Services (M) Sdn Bhd and SJDB Facilities Resources. Built with React, TypeScript, Vite and Tailwind CSS. Fonts, logo, photographs and the downloadable company profile are served locally.
 
-Repository: [FixITSukil/SJDB-Website](https://github.com/FixITSukil/SJDB-Website). It is private by default. The current GitHub plan requires a public repository for GitHub Pages; until that sharing choice is made, the workflow builds and validates the private source while skipping Pages deployment.
+Repository: [FixITSukil/SJDB-Website](https://github.com/FixITSukil/SJDB-Website). Customer presentation URL: [SJDB landing page](https://fixitsukil.github.io/SJDB-Website/). The public GitHub Pages deployment and live desktop/mobile checks passed on 20 October 2026.
 
 ![SJDB landing page preview](docs/preview.png)
 
@@ -26,9 +26,7 @@ npm run preview
 
 ## Publish with GitHub Pages
 
-The workflow in `.github/workflows/deploy-pages.yml` installs the locked dependencies with Node.js 22, builds and prerenders the site, and deploys only `dist/`. It runs on pushes to `main` and can also be started manually from the repository's Actions tab.
-
-After the repository is created and pushed, open **Settings → Pages → Build and deployment** and choose **GitHub Actions** as the source. Run **Deploy landing page to GitHub Pages** from **Actions**, or push a new commit to `main`. A successful deployment exposes the presentation URL in the `github-pages` environment and the workflow summary. GitHub Pages must be available for the repository's visibility and account plan; the workflow does not create or change that setting.
+GitHub Actions is configured to publish the site automatically on pushes to `main`. The workflow in `.github/workflows/deploy-pages.yml` installs the locked dependencies with Node.js 22, builds and prerenders the site, and deploys only `dist/`. It can also be started manually from the repository's Actions tab. A successful deployment exposes the presentation URL in the `github-pages` environment and the workflow summary.
 
 The build receives `SITE_URL` from GitHub Pages and uses it for canonical, sharing and structured-data website URLs. For another static host, set `SITE_URL` to the complete public site URL, including any project path, before running `npm run build`. Without `SITE_URL`, a local build remains portable and does not assume a production domain.
 
@@ -76,4 +74,4 @@ The customer supplied `SJDB PROFILE 2026.pdf`, a 22-page company profile. Its we
 3. Build with `npm run build`, deploy `dist/` with HTTPS, and verify that the profile PDF, logo, fonts and project images load on the public URL. Relative URLs support project subdirectories without hard-coding a repository name.
 4. Check both languages on a phone and desktop, including menu navigation, service selection, project dialogs, FAQ, keyboard focus, phone links, directions and both enquiry channels. Send a real WhatsApp/email enquiry manually to confirm receipt with the company; opening a draft alone does not establish delivery.
 
-The page can be hosted as a static site. A custom domain has not been provisioned by this project. The workflow is ready locally; confirm a successful GitHub Pages run before sharing a public presentation URL.
+The live GitHub Pages URL is ready for customer presentation. A custom domain has not been provisioned by this project.
