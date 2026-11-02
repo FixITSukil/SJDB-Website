@@ -26,6 +26,7 @@ import {
   X,
 } from "@phosphor-icons/react";
 import { copy, projects, serviceGroups } from "./content";
+import HeroSlideshow from "./HeroSlideshow";
 import type { Language } from "./content";
 
 const contact = {
@@ -368,29 +369,7 @@ const App = () => {
               </div>
             </div>
             <div className="relative pb-7 pl-0 sm:pl-7 lg:pt-0">
-              <div className="relative h-[390px] overflow-hidden rounded-tl-[80px] sm:h-[500px] lg:h-[550px]">
-                <img
-                  src="assets/sjdb-courtyard-cleaning.webp"
-                  alt={
-                    language === "en"
-                      ? "SJDB team member cleaning a landscaped courtyard with professional equipment"
-                      : "Kakitangan SJDB membersihkan halaman berlandskap dengan peralatan profesional"
-                  }
-                  width="1800"
-                  height="1350"
-                  fetchPriority="high"
-                  className="h-full w-full object-cover object-[63%_center]"
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-7 pb-7 pt-20 text-xs text-white">
-                  <span className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-white" />
-                    {t.hero.photoCaption}
-                  </span>
-                </div>
-                <span className="absolute right-5 top-5 grid h-12 w-12 place-items-center rounded-full border border-white/50 bg-white/10 text-2xl text-white">
-                  <Sparkle aria-hidden="true" />
-                </span>
-              </div>
+              <HeroSlideshow language={language} />
               <div className="absolute -bottom-0 left-0 flex max-w-[300px] items-center gap-4 border border-ink/10 bg-white p-5 shadow-[0_8px_30px_-12px_#152e4535]">
                 <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-mist text-2xl text-brand">
                   <ShieldCheck aria-hidden="true" />
