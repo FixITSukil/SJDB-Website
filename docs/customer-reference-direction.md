@@ -1,4 +1,4 @@
-# Customer reference draft — 5 November 2026
+# Customer reference direction — 5 November 2026
 
 The customer requested a presentation similar to Graduan Bersatu Padat and Ambience Daya Jana. The user approved building a revised draft with SJDB's current content while additional company information and photographs are forthcoming.
 
@@ -8,7 +8,7 @@ The customer requested a presentation similar to Graduan Bersatu Padat and Ambie
 - [Ambience Daya Jana](https://dayajana.com.my/) emphasises corporate information, company-profile download, [service scope](https://dayajana.com.my/products.html), [client references](https://dayajana.com.my/clients.html), and [company background](https://dayajana.com.my/outline.html).
 - The shared direction is a fuller corporate cleaning-company website with operational detail and project evidence. Their assets, copy, staff counts, clients, policies and credentials are not SJDB facts and were not transferred.
 
-## Revised draft
+## Revised website
 
 1. **Home:** registered company identity, red/navy navigation, full-width photo slideshow, company introduction, photographic service categories, selected projects and contact actions.
 2. **About Us:** company background, vision, mission, training, supervision, quality approach, team photographs, registration identities and profile download.
@@ -23,4 +23,4 @@ English/Bahasa Malaysia, reduced-motion support, mobile navigation, mobile conta
 
 Updated project photographs, any verified certificates or registration documents, an approved management introduction and any changes to contact/service information can be added when supplied. No missing credentials or figures have been invented for the draft.
 
-This revision is developed on `customer-reference-draft`. The live `main` site is not changed by the draft branch.
+This revision was developed on `customer-reference-draft` and published through [PR #2](https://github.com/FixITSukil/SJDB-Website/pull/2) after user approval. The revised six-page website is live at [the customer presentation URL](https://fixitsukil.github.io/SJDB-Website/). The slideshow resume patch passes local regression checks; final live verification of that patch is pending.

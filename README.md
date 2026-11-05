@@ -1,8 +1,8 @@
-# SJDB corporate website — customer reference draft
+# SJDB corporate website
 
-A responsive six-page English/Bahasa Malaysia corporate website draft for SJDB Management and Services (M) Sdn Bhd and SJDB Facilities Resources. It follows the customer’s requested corporate-site direction using SJDB’s existing content and authentic photographs. Built with React, TypeScript, Vite and Tailwind CSS; fonts and media are self-hosted.
+A responsive six-page English/Bahasa Malaysia corporate website for SJDB Management and Services (M) Sdn Bhd and SJDB Facilities Resources. It follows the customer’s requested corporate-site direction using SJDB’s existing content and authentic photographs. Built with React, TypeScript, Vite and Tailwind CSS; fonts and media are self-hosted.
 
-Repository: [FixITSukil/SJDB-Website](https://github.com/FixITSukil/SJDB-Website). This revision is on `customer-reference-draft`; the [live main site](https://fixitsukil.github.io/SJDB-Website/) is unchanged. See [the reference direction](docs/customer-reference-direction.md) and [draft verification](research/revised-draft-verification.md).
+Repository: [FixITSukil/SJDB-Website](https://github.com/FixITSukil/SJDB-Website). [PR #2](https://github.com/FixITSukil/SJDB-Website/pull/2) is merged into `main`, and the revised [customer presentation site](https://fixitsukil.github.io/SJDB-Website/) is live. See [the reference direction](docs/customer-reference-direction.md) and [release verification](research/revised-draft-verification.md). Final live verification of the slideshow resume patch is pending.
 
 ![Revised SJDB homepage](docs/customer-reference-preview.png)
 
@@ -26,7 +26,7 @@ npm run preview
 
 ## Publish with GitHub Pages
 
-GitHub Actions publishes the site automatically on pushes to `main`. The draft branch is excluded from this deployment trigger; merging the revision into `main` will publish it. The workflow in `.github/workflows/deploy-pages.yml` installs the locked dependencies with Node.js 22, builds and prerenders the site, and deploys only `dist/`. It can also be started manually from the repository's Actions tab. A successful deployment exposes the presentation URL in the `github-pages` environment and the workflow summary.
+GitHub Actions publishes the site automatically on pushes to `main`. The workflow in `.github/workflows/deploy-pages.yml` installs the locked dependencies with Node.js 22, builds and prerenders the site, and deploys only `dist/`. It can also be started manually from the repository's Actions tab. A successful deployment exposes the presentation URL in the `github-pages` environment and the workflow summary.
 
 The build receives `SITE_URL` from GitHub Pages and uses it for canonical, sharing and structured-data website URLs. For another static host, set `SITE_URL` to the complete public site URL, including any project path, before running `npm run build`. Without `SITE_URL`, a local build remains portable and does not assume a production domain.
 
@@ -76,4 +76,4 @@ The customer supplied `SJDB PROFILE 2026.pdf`, a 22-page company profile. Its we
 3. Build with `npm run build`, deploy `dist/` with HTTPS, and verify that the profile PDF, logo, fonts and project images load on the public URL. Relative URLs support project subdirectories without hard-coding a repository name.
 4. Check both languages on a phone and desktop, including menu navigation, service selection, project dialogs, FAQ, keyboard focus, phone links, directions and both enquiry channels. Send a real WhatsApp/email enquiry manually to confirm receipt with the company; opening a draft alone does not establish delivery.
 
-This revised draft is ready for local review using `npm run dev` or `npm run preview`. The existing GitHub Pages site remains the live baseline until the draft is merged. A custom domain has not been configured.
+The revised corporate website is live on GitHub Pages. A custom domain has not been configured.

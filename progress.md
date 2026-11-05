@@ -8,11 +8,13 @@
 - Prepared GitHub Pages deployment on pushes to `main` or a manual workflow run, using Node.js 22 and the prerendered `dist/` output. Relative asset paths support a repository subdirectory; the build can use `SITE_URL` for production sharing metadata.
 - Published the public [FixITSukil/SJDB-Website](https://github.com/FixITSukil/SJDB-Website) repository and [customer presentation site](https://fixitsukil.github.io/SJDB-Website/). GitHub Actions build/deployment passed, and live desktop/mobile checks confirmed assets, PDF download, contact targets, enquiry preparation, project dialog and language persistence. No custom domain is configured.
 
-## Customer reference draft — 5 November 2026
+## Customer reference revision — 5 November 2026
 
 - Reviewed the customer's Graduan Bersatu Padat and Ambience Daya Jana references and built an approved revised draft using current SJDB content.
 - Expanded the landing page into six static corporate pages: Home, About Us, Our Services, Projects, Gallery and Contact Us. Added a full-width photographic hero, corporate company header, photographic service categories, ten documented projects and nine gallery entries.
 - Integrated the newer `origin/main` automatic-slideshow update into the revised hero, including pause/play, hover/focus pauses and reduced-motion support.
 - Preserved English/Bahasa Malaysia, service enquiry preselection across pages, phone/WhatsApp/email actions, profile download, project filters and native image dialogs.
 - Production build, prerendering, 48 responsive language/page checks and functional browser journeys passed. See `research/revised-draft-verification.md`.
-- Revision stays on `customer-reference-draft`; `main` and its live deployment are unchanged. Additional customer information and photographs can be integrated when supplied.
+- Merged [PR #2](https://github.com/FixITSukil/SJDB-Website/pull/2) into `main` at `9cbd938d4ea9ef021180637d1a2614f85adb20a3`. [GitHub Actions deployment 41985997015](https://github.com/FixITSukil/SJDB-Website/actions/runs/41985997015) published the revised six-page [customer presentation site](https://fixitsukil.github.io/SJDB-Website/). Live route, asset, PDF, canonical, gallery, mobile EN/BM and enquiry checks passed.
+- Live slideshow testing confirmed automatic advance, pause and manual navigation, then exposed a stale hover/focus state after leaving the controls. The timer now rechecks actual DOM hover/focus every five seconds. Local regression checks pass automatic rotation, pause, manual navigation, resume and reduced motion; final patch deployment and live verification are pending.
+- Additional customer information and photographs can be integrated when supplied. No custom domain is configured.

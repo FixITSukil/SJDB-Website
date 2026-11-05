@@ -1,4 +1,4 @@
-# Revised corporate draft verification — 5 November 2026
+# Revised corporate website verification — 5 November 2026
 
 Story: A visitor browses SJDB's corporate company, service, project and gallery pages, then starts an enquiry with the chosen service carried into the contact form. Both English and Bahasa Malaysia remain available.
 
@@ -18,9 +18,16 @@ Story: A visitor browses SJDB's corporate company, service, project and gallery 
 - Automatic hero rotation advances after five seconds. Pause/play, manual next/previous and arrow-key controls work. Reduced-motion mode keeps the slideshow static; hover/focus and hidden-tab suspension are retained.
 - Desktop homepage, About and Gallery, plus mobile homepage, were visually reviewed. No browser runtime or console errors were recorded in the tested flows.
 
-## Publication state and limits
+## Live release verification
 
-- This is a separate draft branch. The live `main` website is unchanged.
+- [PR #2](https://github.com/FixITSukil/SJDB-Website/pull/2) merged into `main` at `9cbd938d4ea9ef021180637d1a2614f85adb20a3`.
+- [GitHub Actions run 41985997015](https://github.com/FixITSukil/SJDB-Website/actions/runs/41985997015) successfully deployed the revised six-page site to https://fixitsukil.github.io/SJDB-Website/.
+- All six live routes, images, PDF download, route-specific canonical URLs, gallery interactions, mobile EN/BM persistence and enquiry preparation passed live checks.
+- Live slideshow checks passed automatic advance, pause and manual next. Resume testing exposed stale React hover/focus state after leaving the controls. The timer now rechecks actual DOM hover/focus every five seconds; local regression checks pass autoplay, pause, manual navigation, resume and reduced motion. Final patch deployment and live verification are pending.
+
+## Practical limits
+
+- The revised corporate website is published on GitHub Pages; a custom domain is not configured.
 - No real WhatsApp or email message was sent. The tests intercepted outgoing drafts; actual app availability and message receipt depend on the customer's accounts and the visitor's device.
 - Tests used Chromium at emulated viewport sizes rather than physical devices or every browser.
 - Current content and photographs come from the existing SJDB profile. No competitor credentials, contracts, statistics, assets or testimonials were copied.

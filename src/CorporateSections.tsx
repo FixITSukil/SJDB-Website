@@ -36,6 +36,7 @@ const serviceImages: Record<string, string> = {
 };
 
 export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
+  const heroRegion = useRef<HTMLElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [hovered, setHovered] = useState(false);
@@ -64,12 +65,20 @@ export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
   const isRotating =
     playing && !hovered && !focused && !reducedMotion && pageVisible;
   useEffect(() => {
-    if (!isRotating) return;
-    const timer = window.setTimeout(() => {
+    if (!playing || reducedMotion || !pageVisible) return;
+    const timer = window.setInterval(() => {
+      // Scrolling can change hover/focus without a matching React leave event.
+      // Check the current DOM state so rotation resumes after interaction ends.
+      const region = heroRegion.current;
+      const hasHover = region?.matches(":hover") ?? false;
+      const hasFocus = region?.contains(document.activeElement) ?? false;
+      setHovered(hasHover);
+      setFocused(hasFocus);
+      if (hasHover || hasFocus || document.hidden) return;
       setActiveSlide((current) => (current + 1) % heroSlides.length);
     }, 5000);
-    return () => window.clearTimeout(timer);
-  }, [activeSlide, isRotating]);
+    return () => window.clearInterval(timer);
+  }, [activeSlide, playing, reducedMotion, pageVisible]);
 
   const handleSlide = (offset: number) => {
     setActiveSlide(
@@ -85,6 +94,7 @@ export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
 
   return (
     <section
+      ref={heroRegion}
       className="corp-hero relative isolate overflow-hidden bg-ink text-white"
       role="region"
       aria-label={t.hero.eyebrow}
