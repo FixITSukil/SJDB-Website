@@ -114,6 +114,7 @@ const App = ({ page = "home" }: { page?: PageId }) => {
 
   const handleLanguage = (nextLanguage: Language) => {
     setLanguage(nextLanguage);
+    setPreparedEnquiry(null);
     try {
       localStorage.setItem("sjdb-language", nextLanguage);
     } catch {

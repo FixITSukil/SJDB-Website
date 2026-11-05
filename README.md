@@ -1,10 +1,10 @@
-# SJDB landing page
+# SJDB corporate website — customer reference draft
 
-A responsive English/Bahasa Melayu landing page for SJDB Management and Services (M) Sdn Bhd and SJDB Facilities Resources. Built with React, TypeScript, Vite and Tailwind CSS. Fonts, logo, photographs and the downloadable company profile are served locally.
+A responsive six-page English/Bahasa Malaysia corporate website draft for SJDB Management and Services (M) Sdn Bhd and SJDB Facilities Resources. It follows the customer’s requested corporate-site direction using SJDB’s existing content and authentic photographs. Built with React, TypeScript, Vite and Tailwind CSS; fonts and media are self-hosted.
 
-Repository: [FixITSukil/SJDB-Website](https://github.com/FixITSukil/SJDB-Website). Customer presentation URL: [SJDB landing page](https://fixitsukil.github.io/SJDB-Website/). The public GitHub Pages deployment and live desktop/mobile checks passed on 20 October 2026.
+Repository: [FixITSukil/SJDB-Website](https://github.com/FixITSukil/SJDB-Website). This revision is on `customer-reference-draft`; the [live main site](https://fixitsukil.github.io/SJDB-Website/) is unchanged. See [the reference direction](docs/customer-reference-direction.md) and [draft verification](research/revised-draft-verification.md).
 
-![SJDB landing page preview](docs/preview.png)
+![Revised SJDB homepage](docs/customer-reference-preview.png)
 
 ## Run locally
 
@@ -22,11 +22,11 @@ npm run build
 npm run preview
 ```
 
-`build` checks TypeScript, creates the production site in `dist/`, and prerenders the English page into HTML so its content is readable before JavaScript loads. The page then hydrates for bilingual content and interactive features. `preview` serves that build for a local check. Upload the contents of `dist/` to a static host; do not deploy `node_modules/`, `tmp/` or research working files. Vite's relative base (`./`) and relative public asset/PDF URLs support both a domain root and a project subdirectory such as a GitHub Pages repository URL.
+`build` checks TypeScript and prerenders six production HTML pages into `dist/`: `index.html`, `about.html`, `services.html`, `projects.html`, `gallery.html` and `contact.html`. Their content is readable before JavaScript loads, and direct page links work on static hosting. The page then hydrates for bilingual content and interactive features. `preview` serves that build for a local check. Upload the contents of `dist/` to a static host; do not deploy `node_modules/`, `tmp/` or research working files. Vite's relative base (`./`) and relative public asset/PDF URLs support both a domain root and a project subdirectory such as a GitHub Pages repository URL.
 
 ## Publish with GitHub Pages
 
-GitHub Actions is configured to publish the site automatically on pushes to `main`. The workflow in `.github/workflows/deploy-pages.yml` installs the locked dependencies with Node.js 22, builds and prerenders the site, and deploys only `dist/`. It can also be started manually from the repository's Actions tab. A successful deployment exposes the presentation URL in the `github-pages` environment and the workflow summary.
+GitHub Actions publishes the site automatically on pushes to `main`. The draft branch is excluded from this deployment trigger; merging the revision into `main` will publish it. The workflow in `.github/workflows/deploy-pages.yml` installs the locked dependencies with Node.js 22, builds and prerenders the site, and deploys only `dist/`. It can also be started manually from the repository's Actions tab. A successful deployment exposes the presentation URL in the `github-pages` environment and the workflow summary.
 
 The build receives `SITE_URL` from GitHub Pages and uses it for canonical, sharing and structured-data website URLs. For another static host, set `SITE_URL` to the complete public site URL, including any project path, before running `npm run build`. Without `SITE_URL`, a local build remains portable and does not assume a production domain.
 
@@ -35,7 +35,7 @@ The official action release versions were checked on 20 October 2026: [checkout]
 ## Enquiries and interaction
 
 - The language selector changes the visible copy and document language. The browser stores the selection under `sjdb-language` in local storage; the selector still works when storage is unavailable.
-- Service categories and project filters switch content on the page. Project cards open a native dialog. Service enquiry buttons preselect a service in the contact form.
+- The corporate navigation opens real static pages. Category links open the matching service selection; service enquiry buttons carry the selected service to Contact. Project and gallery filters switch content, and image cards open native dialogs. The homepage slideshow preserves automatic rotation with pause/play, hover/focus pauses and reduced-motion support.
 - Call links open the device's phone handler. WhatsApp links open `wa.me` using SJDB's profile mobile number. Email links use the visitor's configured email application.
 - The contact form prepares a message and opens WhatsApp or an email draft. **The visitor must review and send the message in that application.** The page has no enquiry backend, email delivery service, database, booking system or payment processing. It does not confirm message delivery. A prepared-message link remains available if the external application did not open automatically.
 - The directions link searches Google Maps using the profile address; it is not a verified Google Business Profile link.
@@ -44,6 +44,8 @@ The official action release versions were checked on 20 October 2026: [checkout]
 
 | Location                               | Update here                                                                                                                                             |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/corporate-content.ts`             | Corporate EN/BM copy, page filenames, hero slides, gallery entries and additional profile-backed projects                                               |
+| `src/CorporateSections.tsx`            | Corporate homepage, company sections, photo gallery and page headings                                                                                   |
 | `src/content.ts`                       | English/BM copy, service categories, project titles, locations, scopes and image references                                                             |
 | `src/App.tsx`                          | `contact` object near the top, enquiry formatting, `wa.me` links, visible formatted phone numbers, postal address, legal names and registration numbers |
 | `index.html`                           | Page title, description, sharing metadata, favicon and LocalBusiness structured data, including phone, email and address                                |
@@ -74,4 +76,4 @@ The customer supplied `SJDB PROFILE 2026.pdf`, a 22-page company profile. Its we
 3. Build with `npm run build`, deploy `dist/` with HTTPS, and verify that the profile PDF, logo, fonts and project images load on the public URL. Relative URLs support project subdirectories without hard-coding a repository name.
 4. Check both languages on a phone and desktop, including menu navigation, service selection, project dialogs, FAQ, keyboard focus, phone links, directions and both enquiry channels. Send a real WhatsApp/email enquiry manually to confirm receipt with the company; opening a draft alone does not establish delivery.
 
-The live GitHub Pages URL is ready for customer presentation. A custom domain has not been provisioned by this project.
+This revised draft is ready for local review using `npm run dev` or `npm run preview`. The existing GitHub Pages site remains the live baseline until the draft is merged. A custom domain has not been configured.
