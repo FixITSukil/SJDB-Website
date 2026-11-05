@@ -24,3 +24,5 @@ The local typography skill and the online [Frontend Design skill](https://github
 ## Verified before publishing
 
 Production build and six-page prerender passed. All six pages in both languages have no overflow at 320, 390, 768 and 1440 pixels (48 checks). The new font families and weights load correctly. No pause/play button appears in either language. Automatic slide advance, hover suspension, resume after interaction, manual navigation and reduced-motion behaviour passed browser checks without runtime errors.
+
+Published by [GitHub Actions run 41989733322](https://github.com/FixITSukil/SJDB-Website/actions/runs/41989733322) from commit `0ad93ce`. Live verification confirmed both web font families loaded, no visible pause/play control, automatic rotation, the hero entrance, Bahasa Malaysia persistence, mobile layout, reduced-motion behaviour and service enquiry preselection without browser errors.
