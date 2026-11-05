@@ -7,12 +7,18 @@ import "@fontsource/manrope/latin-500.css";
 import "@fontsource/manrope/latin-600.css";
 import "@fontsource/manrope/latin-700.css";
 import App from "./App";
+import { pageFiles } from "./corporate-content";
 import "./styles.css";
 
 const root = document.getElementById("root")!;
+const currentFile = window.location.pathname.split("/").filter(Boolean).at(-1);
+const currentPage =
+  (Object.keys(pageFiles) as (keyof typeof pageFiles)[]).find(
+    (page) => pageFiles[page] === currentFile,
+  ) ?? "home";
 const application = (
   <React.StrictMode>
-    <App />
+    <App page={currentPage} />
   </React.StrictMode>
 );
 

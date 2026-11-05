@@ -3,10 +3,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: "#152e45",
-        brand: "#1e6182",
-        mist: "#f0f6f8",
-        muted: "#5b6d78",
+        ink: "#082b4b",
+        brand: "#1b567a",
+        mist: "#f3f6f8",
+        muted: "#5a6876",
       },
       fontFamily: {
         sans: ["DM Sans", "sans-serif"],
