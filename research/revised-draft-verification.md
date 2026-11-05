@@ -23,7 +23,7 @@ Story: A visitor browses SJDB's corporate company, service, project and gallery 
 - [PR #2](https://github.com/FixITSukil/SJDB-Website/pull/2) merged into `main` at `9cbd938d4ea9ef021180637d1a2614f85adb20a3`.
 - [GitHub Actions run 41985997015](https://github.com/FixITSukil/SJDB-Website/actions/runs/41985997015) successfully deployed the revised six-page site to https://fixitsukil.github.io/SJDB-Website/.
 - All six live routes, images, PDF download, route-specific canonical URLs, gallery interactions, mobile EN/BM persistence and enquiry preparation passed live checks.
-- Live slideshow checks passed automatic advance, pause and manual next. Resume testing exposed stale React hover/focus state after leaving the controls. The timer now rechecks actual DOM hover/focus every five seconds; local regression checks pass autoplay, pause, manual navigation, resume and reduced motion. Final patch deployment and live verification are pending.
+- Live slideshow checks passed automatic advance, pause and manual next. Resume testing exposed stale React hover/focus state after leaving the controls. The timer now rechecks actual DOM hover/focus every five seconds; local regression checks pass autoplay, pause, manual navigation, resume and reduced motion. The patch was published by [deployment 41986972674](https://github.com/FixITSukil/SJDB-Website/actions/runs/41986972674) at commit `1137578`. Live regression checks now pass automatic advance, pause, manual next, resume after leaving the controls and reduced-motion behaviour.
 
 ## Practical limits
 

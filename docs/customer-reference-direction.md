@@ -23,4 +23,4 @@ English/Bahasa Malaysia, reduced-motion support, mobile navigation, mobile conta
 
 Updated project photographs, any verified certificates or registration documents, an approved management introduction and any changes to contact/service information can be added when supplied. No missing credentials or figures have been invented for the draft.
 
-This revision was developed on `customer-reference-draft` and published through [PR #2](https://github.com/FixITSukil/SJDB-Website/pull/2) after user approval. The revised six-page website is live at [the customer presentation URL](https://fixitsukil.github.io/SJDB-Website/). The slideshow resume patch passes local regression checks; final live verification of that patch is pending.
+This revision was developed on `customer-reference-draft` and published through [PR #2](https://github.com/FixITSukil/SJDB-Website/pull/2) after user approval. The revised six-page website is live at [the customer presentation URL](https://fixitsukil.github.io/SJDB-Website/). The slideshow resume patch is deployed and verified live, including automatic rotation, pause, resume, manual controls and reduced motion.

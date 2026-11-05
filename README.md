@@ -2,7 +2,7 @@
 
 A responsive six-page English/Bahasa Malaysia corporate website for SJDB Management and Services (M) Sdn Bhd and SJDB Facilities Resources. It follows the customer’s requested corporate-site direction using SJDB’s existing content and authentic photographs. Built with React, TypeScript, Vite and Tailwind CSS; fonts and media are self-hosted.
 
-Repository: [FixITSukil/SJDB-Website](https://github.com/FixITSukil/SJDB-Website). [PR #2](https://github.com/FixITSukil/SJDB-Website/pull/2) is merged into `main`, and the revised [customer presentation site](https://fixitsukil.github.io/SJDB-Website/) is live. See [the reference direction](docs/customer-reference-direction.md) and [release verification](research/revised-draft-verification.md). Final live verification of the slideshow resume patch is pending.
+Repository: [FixITSukil/SJDB-Website](https://github.com/FixITSukil/SJDB-Website). [PR #2](https://github.com/FixITSukil/SJDB-Website/pull/2) is merged into `main`, and the revised [customer presentation site](https://fixitsukil.github.io/SJDB-Website/) is live. See [the reference direction](docs/customer-reference-direction.md) and [release verification](research/revised-draft-verification.md). The slideshow’s automatic rotation, pause, resume, manual controls and reduced-motion behaviour have passed live checks.
 
 ![Revised SJDB homepage](docs/customer-reference-preview.png)
 
