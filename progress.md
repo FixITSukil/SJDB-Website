@@ -17,4 +17,11 @@
 - Production build, prerendering, 48 responsive language/page checks and functional browser journeys passed. See `research/revised-draft-verification.md`.
 - Merged [PR #2](https://github.com/FixITSukil/SJDB-Website/pull/2) into `main` at `9cbd938d4ea9ef021180637d1a2614f85adb20a3`. [GitHub Actions deployment 41985997015](https://github.com/FixITSukil/SJDB-Website/actions/runs/41985997015) published the revised six-page [customer presentation site](https://fixitsukil.github.io/SJDB-Website/). Live route, asset, PDF, canonical, gallery, mobile EN/BM and enquiry checks passed.
 - Live slideshow testing confirmed automatic advance, pause and manual navigation, then exposed a stale hover/focus state after leaving the controls. The timer now rechecks actual DOM hover/focus every five seconds. Local and live regression checks pass automatic rotation, pause, manual navigation, resume and reduced motion. [Deployment 41986972674](https://github.com/FixITSukil/SJDB-Website/actions/runs/41986972674) published the fix at commit `1137578`.
+
+## Proposal typography refinement — 5 November 2026
+
+- Removed the visible pause/play control while retaining automatic rotation, arrows/dots and automatic suspension during interaction or reduced motion.
+- Inspected the proposal's embedded fonts and adopted League Spartan display type from its cover with Public Sans from its service text. Replaced Manrope/DM Sans and relaxed the compressed heading tracking.
+- Added a short hero entrance sequence, quiet section fades and restrained photo-hover motion. Reduced-motion support remains in place.
+- Production build, 48 bilingual responsive checks and slideshow/animation browser checks passed. See `docs/typography-and-motion.md`.
 - Additional customer information and photographs can be integrated when supplied. No custom domain is configured.

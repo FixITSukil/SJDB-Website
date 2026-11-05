@@ -9,8 +9,8 @@ export default {
         muted: "#5a6876",
       },
       fontFamily: {
-        sans: ["DM Sans", "sans-serif"],
-        display: ["Manrope", "sans-serif"],
+        sans: ["Public Sans", "sans-serif"],
+        display: ["League Spartan", "sans-serif"],
       },
     },
   },

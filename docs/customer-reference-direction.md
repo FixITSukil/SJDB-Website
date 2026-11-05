@@ -17,7 +17,7 @@ The customer requested a presentation similar to Graduan Bersatu Padat and Ambie
 5. **Gallery:** nine authentic work/team photographs, filters and keyboard-accessible image dialogs.
 6. **Contact Us:** existing phone, WhatsApp, email and directions links; a localized enquiry form preselects services carried across from other pages.
 
-English/Bahasa Malaysia, reduced-motion support, mobile navigation, mobile contact bar, profile download and accessible slideshow pause/play controls are retained. Every route is emitted as an HTML file so it can be opened directly on GitHub Pages.
+English/Bahasa Malaysia, reduced-motion support, mobile navigation, mobile contact bar, profile download and slideshow arrows/dots are retained. The visible pause/play button was subsequently removed at the user's request. Every route is emitted as an HTML file so it can be opened directly on GitHub Pages.
 
 ## Future customer material
 

@@ -7,8 +7,6 @@ import {
   DownloadSimple,
   Flag,
   MagnifyingGlassPlus,
-  Pause,
-  Play,
   ShieldCheck,
   Target,
   WhatsappLogo,
@@ -38,7 +36,6 @@ const serviceImages: Record<string, string> = {
 export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
   const heroRegion = useRef<HTMLElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [playing, setPlaying] = useState(true);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -62,10 +59,9 @@ export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
     };
   }, []);
 
-  const isRotating =
-    playing && !hovered && !focused && !reducedMotion && pageVisible;
+  const isRotating = !hovered && !focused && !reducedMotion && pageVisible;
   useEffect(() => {
-    if (!playing || reducedMotion || !pageVisible) return;
+    if (reducedMotion || !pageVisible) return;
     const timer = window.setInterval(() => {
       // Scrolling can change hover/focus without a matching React leave event.
       // Check the current DOM state so rotation resumes after interaction ends.
@@ -78,7 +74,7 @@ export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
       setActiveSlide((current) => (current + 1) % heroSlides.length);
     }, 5000);
     return () => window.clearInterval(timer);
-  }, [activeSlide, playing, reducedMotion, pageVisible]);
+  }, [activeSlide, reducedMotion, pageVisible]);
 
   const handleSlide = (offset: number) => {
     setActiveSlide(
@@ -124,12 +120,12 @@ export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
       ))}
       <div className="corp-hero-shade absolute inset-0" aria-hidden="true" />
       <div className="site-container relative z-10 flex min-h-[600px] flex-col justify-center py-20 sm:min-h-[650px]">
-        <div className="max-w-[750px]">
+        <div className="hero-copy max-w-[790px]">
           <p className="eyebrow mb-6 !text-white/85">
             <span className="h-px w-8 bg-[#db2821]" />
             {t.hero.eyebrow}
           </p>
-          <h1 className="max-w-[18ch] font-display text-[clamp(2.45rem,4.5vw,4.2rem)] font-bold leading-[1.12] tracking-[-.045em]">
+          <h1 className="hero-heading">
             {t.hero.title}
             <span className="mt-2 block">{t.hero.line2}</span>
           </h1>
@@ -199,27 +195,6 @@ export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
               className="grid h-11 w-11 place-items-center border border-white/40 transition-colors hover:bg-white/15"
             >
               <ArrowRight aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              onClick={() => setPlaying((current) => !current)}
-              aria-label={
-                language === "en"
-                  ? playing
-                    ? "Pause automatic slideshow"
-                    : "Play automatic slideshow"
-                  : playing
-                    ? "Jeda tayangan slaid automatik"
-                    : "Mainkan tayangan slaid automatik"
-              }
-              aria-pressed={!playing}
-              className="grid h-11 w-11 place-items-center border border-white/40 transition-colors hover:bg-white/15"
-            >
-              {playing ? (
-                <Pause aria-hidden="true" />
-              ) : (
-                <Play aria-hidden="true" />
-              )}
             </button>
           </div>
         </div>
@@ -293,7 +268,7 @@ export const HomeServices = ({ language }: LanguageProps) => {
                   width="800"
                   height="600"
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.025]"
                 />
               </div>
               <div className="flex flex-1 flex-col p-6">
@@ -357,7 +332,7 @@ export const HomeProjects = ({
                   width="800"
                   height="600"
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.025]"
                 />
                 <span className="absolute bottom-4 right-4 grid h-11 w-11 place-items-center bg-white text-xl text-ink transition-colors group-hover:bg-brand group-hover:text-white">
                   <ArrowUpRight aria-hidden="true" />
@@ -568,7 +543,7 @@ export const WorkGallery = ({ language }: LanguageProps) => {
                     width="900"
                     height="675"
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.025]"
                   />
                   <span className="absolute bottom-4 right-4 grid h-11 w-11 place-items-center bg-white text-xl text-ink transition-colors group-hover:bg-brand group-hover:text-white">
                     <MagnifyingGlassPlus aria-hidden="true" />
@@ -645,9 +620,7 @@ export const PageHeading = ({
           <span aria-hidden="true">/</span>
           <span aria-current="page">{t.nav[page]}</span>
         </nav>
-        <h1 className="mb-5 font-display text-[clamp(2.25rem,4vw,3.5rem)] font-bold leading-[1.15] tracking-[-.04em]">
-          {t.nav[page]}
-        </h1>
+        <h1 className="corporate-page-title mb-5">{t.nav[page]}</h1>
         <p className="max-w-[70ch] text-base leading-[1.7] text-muted">
           {descriptions[page]}
         </p>

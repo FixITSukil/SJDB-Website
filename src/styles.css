@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    font-family: "DM Sans", sans-serif;
+    font-family: "Public Sans", sans-serif;
     color: #082b4b;
     background: #fff;
     font-synthesis: none;
@@ -44,14 +44,14 @@
   h1,
   h2,
   h3 {
-    font-family: "Manrope", sans-serif;
+    font-family: "League Spartan", sans-serif;
     text-wrap: balance;
   }
   h2 {
     font-size: clamp(1.9rem, 3.1vw, 2.8rem);
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.045em;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: 0.005em;
   }
   p {
     text-wrap: pretty;
@@ -72,11 +72,7 @@
     @apply py-16 lg:py-24;
   }
   .eyebrow {
-    @apply flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[.14em] text-brand sm:text-[11px];
-  }
-  .hero-title {
-    font-size: clamp(2.65rem, 4.5vw, 4rem);
-    @apply font-display font-semibold leading-[1.11] tracking-[-.055em];
+    @apply flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[.1em] text-brand sm:text-[11px];
   }
   .button-primary {
     @apply inline-flex min-h-12 items-center justify-center gap-4 bg-[#d92c24] px-6 py-4 text-[13px] font-semibold text-white transition-colors hover:bg-[#b3211a];
@@ -97,7 +93,7 @@
     @apply mb-10 grid items-end gap-6 lg:grid-cols-[1.15fr_1fr] lg:gap-20;
   }
   .section-description {
-    @apply max-w-[46ch] text-[15px] leading-[1.65] text-muted;
+    @apply max-w-[46ch] text-base leading-[1.6] text-muted;
   }
   .service-tab {
     @apply min-h-11 border border-transparent px-4 py-3 text-xs font-medium text-muted transition-colors hover:bg-mist;
@@ -161,7 +157,7 @@
     @apply h-[66px] w-[66px] shrink-0;
   }
   .corporate-brand strong {
-    @apply font-display text-[18px] font-bold leading-[1.35];
+    @apply font-display text-[19px] font-bold uppercase leading-[1.15] tracking-[.015em];
   }
   .corporate-brand small {
     @apply mt-1.5 block text-[11px] text-muted;
@@ -202,8 +198,12 @@
     @apply text-white/85;
   }
   .corp-hero h1 {
-    @apply max-w-[850px] font-display font-semibold leading-[1.11] tracking-[-.045em];
-    font-size: clamp(2.3rem, 4vw, 3.55rem);
+    @apply max-w-[850px] font-display font-bold uppercase leading-[1.08] tracking-[.01em];
+    font-size: clamp(2.1rem, 3.5vw, 3rem);
+  }
+  .corporate-page-title {
+    @apply font-display font-bold uppercase leading-[1.1] tracking-[.01em];
+    font-size: clamp(2.1rem, 4vw, 3.1rem);
   }
   .corp-hero .button-outline {
     @apply border-white/60 text-white hover:border-white hover:bg-white/10;
@@ -225,10 +225,37 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   [data-reveal].is-visible {
-    animation: card-enter 0.65s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+    animation: section-reveal 0.55s ease-out both;
   }
-  .hero-title {
-    animation: card-enter 0.7s ease-out both;
+  .hero-copy > * {
+    animation: hero-entrance 0.55s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+  }
+  .hero-copy > :nth-child(2) {
+    animation-delay: 60ms;
+  }
+  .hero-copy > :nth-child(3) {
+    animation-delay: 120ms;
+  }
+  .hero-copy > :nth-child(4) {
+    animation-delay: 180ms;
+  }
+}
+@keyframes hero-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes section-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 @keyframes card-enter {
@@ -244,9 +271,6 @@
 @media (max-width: 639px) {
   .form-input {
     font-size: 16px;
-  }
-  .hero-title {
-    font-size: clamp(2.5rem, 9.8vw, 3.7rem);
   }
   html {
     scroll-padding-top: 110px;

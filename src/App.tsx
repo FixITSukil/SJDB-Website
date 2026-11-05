@@ -678,7 +678,7 @@ const App = ({ page = "home" }: { page?: PageId }) => {
                             width="800"
                             height="600"
                             loading="lazy"
-                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            className="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.025]"
                           />
                           <span className="absolute bottom-4 right-4 grid h-10 w-10 place-items-center rounded-full bg-white text-xl transition-colors group-hover:bg-ink group-hover:text-white">
                             <ArrowUpRight aria-hidden="true" />
