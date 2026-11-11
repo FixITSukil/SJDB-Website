@@ -19,7 +19,7 @@ import {
   corporateCopy,
   galleryItems,
   heroSlides,
-  pageFiles,
+  pageHref,
 } from "./corporate-content";
 import type { PageId } from "./corporate-content";
 
@@ -87,7 +87,7 @@ export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
             {t.hero.description}
           </p>
           <div className="flex flex-wrap gap-3">
-            <a className="button-primary" href={pageFiles.contact}>
+            <a className="button-primary" href={pageHref("contact", language)}>
               {t.hero.primary}
               <ArrowUpRight aria-hidden="true" />
             </a>
@@ -187,7 +187,7 @@ export const HomeOverview = ({ language }: LanguageProps) => {
           <p className="mb-7 max-w-[58ch] text-[15px] leading-[1.7] text-muted">
             {t.intro.description}
           </p>
-          <a className="button-primary" href={pageFiles.about}>
+          <a className="button-primary" href={pageHref("about", language)}>
             {t.intro.cta}
             <ArrowUpRight aria-hidden="true" />
           </a>
@@ -214,7 +214,7 @@ export const HomeServices = ({ language }: LanguageProps) => {
             <a
               key={group.id}
               className="group flex flex-col bg-white shadow-[0_4px_18px_#082b4b08] transition-shadow hover:shadow-[0_10px_25px_#082b4b16]"
-              href={`${pageFiles.services}?category=${group.id}`}
+              href={`${pageHref("services", language)}?category=${group.id}`}
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img
@@ -263,7 +263,7 @@ export const HomeProjects = ({
           <div>
             <p className="section-description">{t.work.description}</p>
             <a
-              href={pageFiles.projects}
+              href={pageHref("projects", language)}
               className="mt-4 inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-brand"
             >
               {t.work.all}
@@ -567,7 +567,7 @@ export const PageHeading = ({
           className="mb-6 flex items-center gap-3 text-xs text-muted"
         >
           <a
-            href={pageFiles.home}
+            href={pageHref("home", language)}
             className="inline-flex min-h-11 items-center hover:text-brand"
           >
             {t.breadcrumbHome}
@@ -598,7 +598,7 @@ export const EnquiryBanner = ({ language, whatsappLink }: EnquiryProps) => {
           </p>
         </div>
         <div className="flex shrink-0 flex-wrap gap-3">
-          <a className="button-primary" href={pageFiles.contact}>
+          <a className="button-primary" href={pageHref("contact", language)}>
             {t.banner.action}
             <ArrowUpRight aria-hidden="true" />
           </a>

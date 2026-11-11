@@ -112,32 +112,37 @@ export const copy = {
     },
     faq: {
       eyebrow: "A FEW HELPFUL ANSWERS",
-      title: "Before we get started.",
+      title: "Frequently asked questions",
       items: [
         {
-          question: "Do you offer regular and one-off cleaning?",
+          id: "regular-and-one-off-cleaning",
+          question: "Does SJDB offer regular and one-off cleaning?",
           answer:
-            "Yes. Our services include contract cleaning for ongoing upkeep, as well as ad hoc, periodical, event and emergency cleaning. Contact us to discuss the schedule and availability for your site.",
+            "SJDB offers scheduled contract cleaning, periodic deep cleaning and one-off cleaning for events and other needs. Ask SJDB about emergency cleaning availability at your site.",
         },
         {
-          question: "Can you clean both homes and commercial premises?",
+          id: "commercial-and-residential-cleaning",
+          question: "Does SJDB clean homes and commercial premises?",
           answer:
-            "Yes. We offer residential spring cleaning and housekeeping, alongside cleaning for offices, factories, shopping complexes, condominiums and other shared facilities.",
+            "SJDB offers spring cleaning and housekeeping for homes, and cleaning for offices, factories, shopping complexes and condominium common areas.",
         },
         {
-          question: "What information should I provide for a quotation?",
+          id: "requesting-a-quotation",
+          question: "What does SJDB need for a cleaning quotation?",
           answer:
-            "Tell us your location, property type, approximate size, required service and preferred schedule. Photos and any particular concerns will help our team understand the work involved.",
+            "For a cleaning quotation, send SJDB your property location, type, approximate size, service needed and preferred schedule. Photos can help SJDB assess the work.",
         },
         {
-          question: "Do you handle cleaning after renovation or construction?",
+          id: "post-renovation-and-construction-cleaning",
+          question: "Does SJDB clean after renovation or construction?",
           answer:
-            "Yes. Our services include pre- and post-renovation cleaning, along with initial cleaning for newly completed buildings before handover. We can discuss the scope for your property.",
+            "SJDB provides cleaning before and after renovation, and cleans newly completed buildings before handover. Share your property details so SJDB can discuss the scope of work.",
         },
         {
+          id: "sjdb-office-location",
           question: "Where is SJDB based?",
           answer:
-            "Our main contact address is No. 28G, Jalan DC 4/3, Desa Coalfields, 47000 Sungai Buloh, Selangor. Send us your site location so our team can confirm service availability.",
+            "SJDB’s main office is at No. 28G, Jalan DC 4/3, Desa Coalfields, 47000 Sungai Buloh, Selangor, Malaysia. Share your site location with SJDB to confirm service availability.",
         },
       ],
     },
@@ -269,34 +274,39 @@ export const copy = {
     },
     faq: {
       eyebrow: "JAWAPAN UNTUK ANDA",
-      title: "Sebelum kita bermula.",
+      title: "Soalan lazim",
       items: [
         {
+          id: "regular-and-one-off-cleaning",
           question:
-            "Adakah anda menawarkan pembersihan berkala dan sekali sahaja?",
+            "Adakah SJDB menawarkan pembersihan berkala dan sekali sahaja?",
           answer:
-            "Ya. Kami menawarkan pembersihan kontrak untuk penjagaan berterusan, serta pembersihan ad hoc, berkala, acara dan kecemasan. Hubungi kami untuk membincangkan jadual dan menyemak perkhidmatan di lokasi anda.",
+            "SJDB menawarkan pembersihan kontrak berjadual, pembersihan menyeluruh secara berkala dan pembersihan sekali sahaja untuk acara atau keperluan lain. Hubungi SJDB untuk menyemak ketersediaan pembersihan kecemasan di lokasi anda.",
         },
         {
-          question: "Adakah anda membersihkan kediaman dan premis komersial?",
+          id: "commercial-and-residential-cleaning",
+          question: "Adakah SJDB membersihkan kediaman dan premis komersial?",
           answer:
-            "Ya. Kami menawarkan pembersihan menyeluruh dan pengemasan kediaman, di samping pembersihan pejabat, kilang, kompleks beli-belah, kondominium dan fasiliti bersama yang lain.",
+            "SJDB menawarkan pembersihan menyeluruh dan pengemasan kediaman, serta pembersihan pejabat, kilang, kompleks beli-belah dan kawasan bersama kondominium.",
         },
         {
-          question: "Apakah maklumat yang diperlukan untuk sebut harga?",
+          id: "requesting-a-quotation",
+          question: "Apakah maklumat yang SJDB perlukan untuk sebut harga pembersihan?",
           answer:
-            "Kongsikan lokasi, jenis hartanah, anggaran keluasan, perkhidmatan yang diperlukan dan jadual pilihan anda. Foto serta perkara yang memerlukan perhatian khusus akan membantu pasukan kami memahami skop kerja.",
+            "Untuk sebut harga pembersihan, berikan SJDB lokasi, jenis dan anggaran keluasan hartanah, perkhidmatan yang diperlukan serta jadual pilihan anda. Foto boleh membantu SJDB menilai kerja yang diperlukan.",
         },
         {
+          id: "post-renovation-and-construction-cleaning",
           question:
-            "Adakah anda menyediakan pembersihan selepas pengubahsuaian atau pembinaan?",
+            "Adakah SJDB menyediakan pembersihan selepas pengubahsuaian atau pembinaan?",
           answer:
-            "Ya. Perkhidmatan kami merangkumi pembersihan sebelum dan selepas pengubahsuaian, serta pembersihan awal bangunan baharu sebelum penyerahan. Hubungi kami untuk membincangkan skop bagi hartanah anda.",
+            "SJDB menyediakan pembersihan sebelum dan selepas pengubahsuaian, serta pembersihan bangunan yang baru siap sebelum diserahkan. Berikan maklumat hartanah anda supaya SJDB dapat membincangkan skop kerja.",
         },
         {
+          id: "sjdb-office-location",
           question: "Di manakah lokasi SJDB?",
           answer:
-            "Alamat pejabat utama kami ialah No. 28G, Jalan DC 4/3, Desa Coalfields, 47000 Sungai Buloh, Selangor. Kongsikan lokasi premis anda supaya pasukan kami dapat menyemak perkhidmatan yang sesuai.",
+            "Pejabat utama SJDB terletak di No. 28G, Jalan DC 4/3, Desa Coalfields, 47000 Sungai Buloh, Selangor, Malaysia. Beritahu SJDB lokasi premis anda untuk menyemak ketersediaan perkhidmatan.",
         },
       ],
     },
