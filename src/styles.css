@@ -211,6 +211,10 @@
   .corp-hero .button-primary {
     @apply border border-transparent;
   }
+  .corp-hero :focus-visible {
+    outline-color: white;
+    outline-offset: 2px;
+  }
 }
 
 [data-reveal] {

@@ -34,47 +34,9 @@ const serviceImages: Record<string, string> = {
 };
 
 export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
-  const heroRegion = useRef<HTMLElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [hovered, setHovered] = useState(false);
-  const [focused, setFocused] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
-  const [pageVisible, setPageVisible] = useState(true);
   const t = corporateCopy[language];
   const slide = heroSlides[activeSlide];
-
-  useEffect(() => {
-    const motionPreference = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    );
-    const handleMotionChange = () => setReducedMotion(motionPreference.matches);
-    const handleVisibilityChange = () => setPageVisible(!document.hidden);
-    handleMotionChange();
-    handleVisibilityChange();
-    motionPreference.addEventListener("change", handleMotionChange);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () => {
-      motionPreference.removeEventListener("change", handleMotionChange);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, []);
-
-  const isRotating = !hovered && !focused && !reducedMotion && pageVisible;
-  useEffect(() => {
-    if (reducedMotion || !pageVisible) return;
-    const timer = window.setInterval(() => {
-      // Scrolling can change hover/focus without a matching React leave event.
-      // Check the current DOM state so rotation resumes after interaction ends.
-      const region = heroRegion.current;
-      const hasHover = region?.matches(":hover") ?? false;
-      const hasFocus = region?.contains(document.activeElement) ?? false;
-      setHovered(hasHover);
-      setFocused(hasFocus);
-      if (hasHover || hasFocus || document.hidden) return;
-      setActiveSlide((current) => (current + 1) % heroSlides.length);
-    }, 5000);
-    return () => window.clearInterval(timer);
-  }, [activeSlide, reducedMotion, pageVisible]);
 
   const handleSlide = (offset: number) => {
     setActiveSlide(
@@ -90,25 +52,17 @@ export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
 
   return (
     <section
-      ref={heroRegion}
       className="corp-hero relative isolate overflow-hidden bg-ink text-white"
       role="region"
       aria-label={t.hero.eyebrow}
       aria-roledescription={language === "en" ? "Slideshow" : "Paparan slaid"}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocusCapture={() => setFocused(true)}
-      onBlurCapture={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-          setFocused(false);
-        }
-      }}
     >
       {heroSlides.map((item, index) => (
         <img
           key={item.image}
           className={`corp-slide corp-hero-image absolute inset-0 h-full w-full object-cover ${index === activeSlide ? "is-active" : ""}`}
           src={item.image}
+          style={{ objectPosition: item.position }}
           alt={index === activeSlide ? item.alt[language] : ""}
           aria-hidden={index !== activeSlide}
           width="1800"
@@ -119,7 +73,7 @@ export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
         />
       ))}
       <div className="corp-hero-shade absolute inset-0" aria-hidden="true" />
-      <div className="site-container relative z-10 flex min-h-[600px] flex-col justify-center py-20 sm:min-h-[650px]">
+      <div className="site-container relative z-10 flex min-h-[600px] flex-col justify-center pb-10 pt-12 sm:min-h-[650px] sm:py-20">
         <div className="hero-copy max-w-[790px]">
           <p className="eyebrow mb-6 !text-white/85">
             <span className="h-px w-8 bg-[#db2821]" />
@@ -129,7 +83,7 @@ export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
             {t.hero.title}
             <span className="mt-2 block">{t.hero.line2}</span>
           </h1>
-          <p className="mb-8 mt-7 max-w-[53ch] text-base leading-[1.65] text-white/85 sm:text-lg">
+          <p className="mb-6 mt-5 max-w-[53ch] text-base leading-[1.65] text-white/85 sm:mb-8 sm:mt-7 sm:text-lg">
             {t.hero.description}
           </p>
           <div className="flex flex-wrap gap-3">
@@ -148,15 +102,16 @@ export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
             </a>
           </div>
         </div>
-        <div className="mt-12 flex flex-col justify-between gap-6 border-t border-white/25 pt-5 sm:flex-row sm:items-center">
+        <div className="mt-7 flex flex-col justify-between gap-3 border-t border-white/25 pt-4 sm:mt-12 sm:flex-row sm:items-center sm:gap-6 sm:pt-5">
           <p
             className="max-w-[43ch] text-xs leading-relaxed text-white/80"
-            aria-live={isRotating ? "off" : "polite"}
+            aria-live="polite"
+            aria-atomic="true"
           >
             {slide.caption[language]}
           </p>
           <div
-            className="flex flex-wrap items-center gap-2"
+            className="flex w-fit flex-wrap items-center gap-2 bg-ink/90"
             onKeyDown={handleKeys}
             role="group"
             aria-label={

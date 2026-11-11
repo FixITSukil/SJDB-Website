@@ -2,7 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { renderToString } from "react-dom/server";
 import React from "react";
 import App from "../src/App";
-import { corporateCopy, pageFiles } from "../src/corporate-content";
+import { corporateCopy, heroSlides, pageFiles } from "../src/corporate-content";
 import type { PageId } from "../src/corporate-content";
 
 // Every page is a real HTML file, so direct links work on static hosts and Pages.
@@ -52,8 +52,7 @@ for (const page of Object.keys(pageFiles) as PageId[]) {
   if (baseUrl) {
     const canonical =
       page === "home" ? baseUrl : new URL(pageFiles[page], baseUrl).href;
-    const socialImage = new URL("assets/sjdb-industrial-cleaning.webp", baseUrl)
-      .href;
+    const socialImage = new URL(heroSlides[0].image, baseUrl).href;
     html = html
       .replace(
         /<meta property="og:image" content="[^"]*"\s*\/>/,

@@ -279,18 +279,32 @@ export const corporateCopy = {
 
 export const heroSlides: {
   image: string;
+  position?: string;
   caption: BilingualText;
   alt: BilingualText;
 }[] = [
   {
-    image: "assets/sjdb-industrial-cleaning.webp",
+    image: "assets/sjdb-courtyard-cleaning.webp",
+    position: "65% 3%",
     caption: {
-      en: "Cleaning for commercial and industrial premises",
-      ms: "Pembersihan premis komersial dan industri",
+      en: "Courtyard cleaning",
+      ms: "Pembersihan halaman",
     },
     alt: {
-      en: "SJDB personnel cleaning an industrial facility",
-      ms: "Kakitangan SJDB membersihkan fasiliti industri",
+      en: "SJDB team member cleaning the floor of a landscaped courtyard",
+      ms: "Kakitangan SJDB membersihkan lantai halaman berlandskap",
+    },
+  },
+  {
+    image: "assets/sjdb-carpark-cleaning.webp",
+    position: "38% 15%",
+    caption: {
+      en: "Car park floor cleaning",
+      ms: "Pembersihan lantai tempat letak kereta",
+    },
+    alt: {
+      en: "SJDB team member operating a floor scrubber in a car park",
+      ms: "Kakitangan SJDB menggunakan mesin penyental lantai di tempat letak kereta",
     },
   },
   {
@@ -304,17 +318,6 @@ export const heroSlides: {
       ms: "Kakitangan pembersihan SJDB berkumpul di luar untuk taklimat tapak",
     },
   },
-  {
-    image: "assets/sjdb-courtyard-cleaning.webp",
-    caption: {
-      en: "Care for the spaces your people use every day",
-      ms: "Penjagaan ruang yang digunakan setiap hari",
-    },
-    alt: {
-      en: "SJDB team member cleaning the floor of a landscaped courtyard",
-      ms: "Kakitangan SJDB membersihkan lantai halaman berlandskap",
-    },
-  },
 ];
 
 export const galleryItems: {
@@ -324,10 +327,13 @@ export const galleryItems: {
   caption: BilingualText;
 }[] = [
   {
-    id: "industrial-cleaning",
-    image: "assets/sjdb-industrial-cleaning.webp",
+    id: "carpark-cleaning",
+    image: "assets/sjdb-carpark-cleaning.webp",
     category: "cleaning",
-    caption: { en: "Industrial cleaning", ms: "Pembersihan industri" },
+    caption: {
+      en: "Car park floor cleaning",
+      ms: "Pembersihan lantai tempat letak kereta",
+    },
   },
   {
     id: "commercial-cleaning",

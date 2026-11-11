@@ -80,7 +80,7 @@ Pages **19-20** give named client referrals: SDB Property Management Sdn Bhd, By
 
 ## Asset inventory
 
-All final website-ready assets are in `public/assets`. Photos were extracted directly from the supplied PDF, resized to practical web dimensions, and encoded as WebP. No stock imagery was introduced.
+Website photos come from the supplied PDF and are resized and encoded as WebP. The original car park photo replaces the industrial composite, which has a visible Adobe Stock watermark in the PDF.
 
 | File | Dimensions | Source page/image | Content / suggested use |
 | --- | --- | --- | --- |
@@ -90,7 +90,6 @@ All final website-ready assets are in `public/assets`. Photos were extracted dir
 | `sjdb-team-briefing.webp` | 1800 x 1350 | p7/image0 | Team formation outdoors |
 | `sjdb-courtyard-cleaning.webp` | 1800 x 1350 | p8/image1 | Cleaner vacuuming tiled courtyard, recommended hero |
 | `sjdb-commercial-cleaning.webp` | 1600 x 1200 | p3/image0 | Glass cleaning at commercial property |
-| `sjdb-industrial-cleaning.webp` | 1800 x 1089 | p10/image0 | Wide industrial cleaning scene, alternate hero |
 | `sjdb-floor-care.webp` | 859 x 934 | p12/image3 | Floor-polishing machinery |
 | `sjdb-landscaping.webp` | 1400 x 1050 | p4/image0 | Hedge maintenance |
 | `sjdb-home-cleaning.webp` | 1400 x 1050 | p13/image0 | Bathroom sink cleaning |
