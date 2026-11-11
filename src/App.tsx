@@ -31,8 +31,10 @@ import {
   additionalProjects,
   corporateCopy,
   pageFiles,
+  pageHref,
 } from "./corporate-content";
 import type { PageId } from "./corporate-content";
+import { contact } from "./business";
 import {
   CorporateHero,
   HomeOverview,
@@ -44,13 +46,6 @@ import {
   EnquiryBanner,
 } from "./CorporateSections";
 
-const contact = {
-  mobile: "+60126004127",
-  office: "+60360383285",
-  email: "sjdb.management@gmail.com",
-  secondaryEmail: "sjdbfr@gmail.com",
-  maps: "https://www.google.com/maps/search/?api=1&query=No.%2028G%2C%20Jalan%20DC%204%2F3%2C%20Desa%20Coalfields%2C%2047000%20Sungai%20Buloh%2C%20Selangor%2C%20Malaysia",
-};
 const serviceIcons = {
   building: Buildings,
   sparkle: Sparkle,
@@ -69,17 +64,15 @@ const servicePhotography: Record<string, string> = {
   specialist: "assets/sjdb-floor-care.webp",
   facilities: "assets/sjdb-landscaping.webp",
 };
-const initialLanguage = (): Language => {
-  try {
-    return localStorage.getItem("sjdb-language") === "ms" ? "ms" : "en";
-  } catch {
-    return "en";
-  }
-};
-
-const App = ({ page = "home" }: { page?: PageId }) => {
-  const [language, setLanguage] = useState<Language>("en");
+const App = ({
+  page = "home",
+  language = "en",
+}: {
+  page?: PageId;
+  language?: Language;
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [languageAnchor, setLanguageAnchor] = useState("");
   const [activeService, setActiveService] = useState(serviceGroups[0].id);
   const [projectFilter, setProjectFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState<
@@ -98,7 +91,6 @@ const App = ({ page = "home" }: { page?: PageId }) => {
   const whatsappLink = `https://wa.me/60126004127?text=${encodeURIComponent(language === "en" ? "Hello SJDB, I would like to enquire about your cleaning and facilities services." : "Salam SJDB, saya ingin bertanya tentang perkhidmatan pembersihan dan penyelenggaraan fasiliti.")}`;
 
   useEffect(() => {
-    setLanguage(initialLanguage());
     const params = new URLSearchParams(window.location.search);
     const category = params.get("category");
     const service = params.get("service");
@@ -106,21 +98,20 @@ const App = ({ page = "home" }: { page?: PageId }) => {
       setActiveService(category);
     if (service && allServices.some((item) => item.title.en === service))
       setSelectedService(service);
+    const syncAnchor = () => setLanguageAnchor(window.location.hash);
+    syncAnchor();
+    window.addEventListener("hashchange", syncAnchor);
+    return () => window.removeEventListener("hashchange", syncAnchor);
   }, []);
 
-  useEffect(() => {
-    document.documentElement.lang = language;
-  }, [language]);
-
-  const handleLanguage = (nextLanguage: Language) => {
-    setLanguage(nextLanguage);
-    setPreparedEnquiry(null);
-    try {
-      localStorage.setItem("sjdb-language", nextLanguage);
-    } catch {
-      /* Language still works without storage. */
-    }
-  };
+  const languageQuery = new URLSearchParams();
+  if (page === "services" && activeService !== serviceGroups[0].id)
+    languageQuery.set("category", activeService);
+  if (page === "contact" && selectedService)
+    languageQuery.set("service", selectedService);
+  const languageSearch = languageQuery.size ? `?${languageQuery}` : "";
+  const languageHref = (nextLanguage: Language) =>
+    `${pageHref(page, nextLanguage)}${languageSearch}${languageAnchor}`;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -161,7 +152,7 @@ const App = ({ page = "home" }: { page?: PageId }) => {
   };
   const handleEnquire = (service: string) => {
     if (page !== "contact") {
-      window.location.href = `contact.html?service=${encodeURIComponent(service)}`;
+      window.location.href = `${pageHref("contact", language)}?service=${encodeURIComponent(service)}`;
       return;
     }
     setSelectedService(service);
@@ -233,7 +224,7 @@ const App = ({ page = "home" }: { page?: PageId }) => {
       <header className="corporate-header" onKeyDown={handleMenuKey}>
         <div className="site-container corporate-identity-row">
           <a
-            href="index.html"
+            href={pageHref("home", language)}
             aria-label={language === "en" ? "SJDB home" : "Laman utama SJDB"}
             className="corporate-brand"
           >
@@ -267,32 +258,34 @@ const App = ({ page = "home" }: { page?: PageId }) => {
                 <strong className="text-[15px]">+60 12-600 4127</strong>
               </span>
             </a>
-            <div
+            <nav
               className="flex items-center text-xs font-semibold"
               aria-label={
                 language === "en" ? "Website language" : "Bahasa laman web"
               }
             >
-              <button
-                type="button"
+              <a
+                href={languageHref("en")}
                 lang="en"
-                aria-pressed={language === "en"}
-                onClick={() => handleLanguage("en")}
-                className={`language-button ${language === "en" ? "is-active" : ""}`}
+                hrefLang="en-MY"
+                aria-label="English"
+                aria-current={language === "en" ? "page" : undefined}
+                className={`language-button inline-flex items-center justify-center ${language === "en" ? "is-active" : ""}`}
               >
                 EN
-              </button>
-              <span className="text-ink/20">/</span>
-              <button
-                type="button"
+              </a>
+              <span className="text-ink/20" aria-hidden="true">/</span>
+              <a
+                href={languageHref("ms")}
                 lang="ms"
-                aria-pressed={language === "ms"}
-                onClick={() => handleLanguage("ms")}
-                className={`language-button ${language === "ms" ? "is-active" : ""}`}
+                hrefLang="ms-MY"
+                aria-label="Bahasa Malaysia"
+                aria-current={language === "ms" ? "page" : undefined}
+                className={`language-button inline-flex items-center justify-center ${language === "ms" ? "is-active" : ""}`}
               >
                 BM
-              </button>
-            </div>
+              </a>
+            </nav>
             <button
               ref={menuButton}
               type="button"
@@ -322,7 +315,7 @@ const App = ({ page = "home" }: { page?: PageId }) => {
             >
               {(Object.keys(pageFiles) as PageId[]).map((item) => (
                 <a
-                  href={pageFiles[item]}
+                  href={pageHref(item, language)}
                   key={item}
                   aria-current={page === item ? "page" : undefined}
                   className={`corporate-nav-link ${page === item ? "is-active" : ""}`}
@@ -331,7 +324,7 @@ const App = ({ page = "home" }: { page?: PageId }) => {
                 </a>
               ))}
             </nav>
-            <a className="corporate-nav-quote" href="contact.html">
+            <a className="corporate-nav-quote" href={pageHref("contact", language)}>
               {t.nav.quote}
               <ArrowUpRight aria-hidden="true" />
             </a>
@@ -345,7 +338,7 @@ const App = ({ page = "home" }: { page?: PageId }) => {
           >
             {(Object.keys(pageFiles) as PageId[]).map((item) => (
               <a
-                href={pageFiles[item]}
+                href={pageHref(item, language)}
                 key={item}
                 onClick={() => setIsMenuOpen(false)}
                 aria-current={page === item ? "page" : undefined}
@@ -502,7 +495,7 @@ const App = ({ page = "home" }: { page?: PageId }) => {
                 <div className="mt-6 flex flex-col items-start justify-between gap-4 text-sm text-muted sm:flex-row sm:items-center">
                   <p>{group.description[language]}</p>
                   <a
-                    href="contact.html"
+                    href={pageHref("contact", language)}
                     className="inline-flex min-h-11 shrink-0 items-center gap-2 font-semibold text-brand"
                   >
                     {t.services.viewAll}
@@ -948,7 +941,7 @@ const App = ({ page = "home" }: { page?: PageId }) => {
                 </div>
                 <div>
                   {t.faq.items.map((faq) => (
-                    <details className="faq-item" key={faq.question}>
+                    <details className="faq-item" id={`faq-${faq.id}`} key={faq.id}>
                       <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-6 text-sm font-semibold">
                         {faq.question}
                         <CaretDown
@@ -976,7 +969,7 @@ const App = ({ page = "home" }: { page?: PageId }) => {
           <div className="mb-12 grid gap-10 md:grid-cols-[1.5fr_1fr_1.2fr]">
             <div>
               <a
-                href="index.html"
+                href={pageHref("home", language)}
                 className="mb-5 inline-flex items-center gap-3"
               >
                 <img
@@ -1009,7 +1002,7 @@ const App = ({ page = "home" }: { page?: PageId }) => {
               <div className="flex flex-col gap-4 text-sm">
                 {serviceGroups.map((item) => (
                   <a
-                    href={`services.html?category=${item.id}`}
+                    href={`${pageHref("services", language)}?category=${item.id}`}
                     key={item.id}
                     onClick={() => setActiveService(item.id)}
                     className="hover:text-white/65"

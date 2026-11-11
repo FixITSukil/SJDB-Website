@@ -12,6 +12,21 @@ export const pageFiles: Record<PageId, string> = {
   contact: "contact.html",
 };
 
+export const localizedPageFiles: Record<Language, Record<PageId, string>> = {
+  en: pageFiles,
+  ms: {
+    home: "ms.html",
+    about: "tentang-kami.html",
+    services: "perkhidmatan.html",
+    projects: "projek.html",
+    gallery: "galeri.html",
+    contact: "hubungi-kami.html",
+  },
+};
+
+export const pageHref = (page: PageId, language: Language) =>
+  page === "home" && language === "en" ? "./" : localizedPageFiles[language][page];
+
 interface CorporatePageCopy {
   nav: Record<PageId, string>;
   brandTagline: string;
@@ -84,7 +99,7 @@ export const corporateCopy = {
       title: "Professional cleaning.",
       line2: "Dependable facilities care.",
       description:
-        "Cleaning and building maintenance for commercial premises, residential properties and shared facilities. A practical approach, supported by trained people and close supervision.",
+        "Based in Sungai Buloh, Selangor, SJDB provides contract cleaning and building facilities maintenance for commercial and residential properties.",
       primary: "Request a Quotation",
       secondary: "WhatsApp Our Team",
       previous: "Previous slide",
@@ -102,7 +117,7 @@ export const corporateCopy = {
       eyebrow: "WHAT WE DO",
       title: "Cleaning and maintenance for every requirement.",
       description:
-        "From regular contract cleaning to specialist surface care and outdoor maintenance, our services support the day-to-day needs of your property.",
+        "SJDB provides commercial and residential cleaning, specialist floor and facade care, and outdoor facilities maintenance.",
       all: "View All Services",
       details: "Enquire About This Service",
     },
@@ -110,14 +125,14 @@ export const corporateCopy = {
       eyebrow: "OUR PROJECT EXPERIENCE",
       title: "Experience across a range of properties.",
       description:
-        "Selected commercial and residential properties featured in our 2026 company profile, with the service scopes carried out by SJDB.",
+        "SJDB’s 2026 company profile documents work such as common-area cleaning at SqWhere in Sungai Buloh and marble polishing at Hotel Maya in Kuala Lumpur.",
       all: "View Our Projects",
     },
     about: {
       eyebrow: "ABOUT SJDB",
       title: "A professional approach to property care.",
       intro:
-        "SJDB Management and Services (M) Sdn Bhd and SJDB Facilities Resources provide cleaning services and building facilities maintenance. Our work combines skilled personnel, established methods and structured supervision to meet each client’s operational requirements.",
+        "SJDB Management and Services (M) Sdn Bhd and SJDB Facilities Resources provide cleaning and building facilities maintenance from Sungai Buloh, Selangor. The 2026 company profile describes how SJDB trains staff, supervises work and inspects sites.",
       visionTitle: "Our Vision",
       visionText:
         "To become a leading and trusted cleaning service provider, a preferred partner for our clients, and a company recognised for quality services that offer value for money.",
@@ -156,7 +171,7 @@ export const corporateCopy = {
       eyebrow: "SJDB IN ACTION",
       title: "Our people and our work.",
       description:
-        "A closer look at SJDB’s cleaning activities, maintenance work and personnel, as featured in our company profile.",
+        "Photos from SJDB’s 2026 company profile show its team, cleaning work, floor care and landscape maintenance.",
       all: "All Photos",
       cleaning: "Cleaning",
       team: "Our Team",
@@ -187,7 +202,7 @@ export const corporateCopy = {
       title: "Pembersihan profesional.",
       line2: "Fasiliti sentiasa terjaga.",
       description:
-        "Pembersihan dan penyelenggaraan bangunan untuk premis komersial, kediaman serta fasiliti bersama. Pendekatan praktikal dengan kakitangan terlatih dan penyeliaan rapi.",
+        "Berpusat di Sungai Buloh, Selangor, SJDB menyediakan pembersihan kontrak dan penyelenggaraan fasiliti bangunan untuk hartanah komersial dan kediaman.",
       primary: "Mohon Sebut Harga",
       secondary: "WhatsApp Pasukan Kami",
       previous: "Slaid sebelumnya",
@@ -205,7 +220,7 @@ export const corporateCopy = {
       eyebrow: "PERKHIDMATAN KAMI",
       title: "Pembersihan dan penyelenggaraan mengikut keperluan anda.",
       description:
-        "Daripada pembersihan kontrak hingga penjagaan permukaan khusus dan penyelenggaraan kawasan luar, perkhidmatan kami menyokong keperluan harian hartanah anda.",
+        "SJDB menyediakan pembersihan komersial dan kediaman, penjagaan khusus lantai dan fasad, serta penyelenggaraan fasiliti di kawasan luar.",
       all: "Lihat Semua Perkhidmatan",
       details: "Tanya Tentang Perkhidmatan Ini",
     },
@@ -213,14 +228,14 @@ export const corporateCopy = {
       eyebrow: "PENGALAMAN PROJEK KAMI",
       title: "Pengalaman merentasi pelbagai jenis hartanah.",
       description:
-        "Antara hartanah komersial dan kediaman yang dipaparkan dalam profil syarikat kami bagi tahun 2026, berserta skop perkhidmatan yang dilaksanakan oleh SJDB.",
+        "Profil syarikat SJDB 2026 memaparkan kerja seperti pembersihan kawasan bersama di SqWhere, Sungai Buloh, dan penggilapan marmar di Hotel Maya, Kuala Lumpur.",
       all: "Lihat Projek Kami",
     },
     about: {
       eyebrow: "TENTANG SJDB",
       title: "Pendekatan profesional dalam penjagaan hartanah.",
       intro:
-        "SJDB Management and Services (M) Sdn Bhd dan SJDB Facilities Resources menyediakan perkhidmatan pembersihan serta penyelenggaraan fasiliti bangunan. Kami menggabungkan kakitangan mahir, kaedah kerja yang teratur dan penyeliaan berstruktur untuk memenuhi keperluan operasi setiap pelanggan.",
+        "SJDB Management and Services (M) Sdn Bhd dan SJDB Facilities Resources menyediakan pembersihan dan penyelenggaraan fasiliti bangunan dari Sungai Buloh, Selangor. Profil syarikat 2026 menerangkan cara SJDB melatih kakitangan, menyelia kerja dan memeriksa tapak.",
       visionTitle: "Visi Kami",
       visionText:
         "Menjadi penyedia perkhidmatan pembersihan yang terkemuka dan dipercayai, rakan pilihan pelanggan, serta syarikat yang dikenali kerana perkhidmatan berkualiti pada harga berpatutan.",
@@ -259,7 +274,7 @@ export const corporateCopy = {
       eyebrow: "SJDB DI LAPANGAN",
       title: "Warga kerja dan aktiviti kami.",
       description:
-        "Lihat aktiviti pembersihan, kerja penyelenggaraan dan kakitangan SJDB yang dipaparkan dalam profil syarikat kami.",
+        "Foto dalam profil syarikat SJDB 2026 memaparkan pasukannya serta kerja pembersihan, penjagaan lantai dan penyelenggaraan landskap.",
       all: "Semua Foto",
       cleaning: "Pembersihan",
       team: "Pasukan Kami",
@@ -279,18 +294,32 @@ export const corporateCopy = {
 
 export const heroSlides: {
   image: string;
+  position?: string;
   caption: BilingualText;
   alt: BilingualText;
 }[] = [
   {
-    image: "assets/sjdb-industrial-cleaning.webp",
+    image: "assets/sjdb-courtyard-cleaning.webp",
+    position: "65% 3%",
     caption: {
-      en: "Cleaning for commercial and industrial premises",
-      ms: "Pembersihan premis komersial dan industri",
+      en: "Courtyard cleaning",
+      ms: "Pembersihan halaman",
     },
     alt: {
-      en: "SJDB personnel cleaning an industrial facility",
-      ms: "Kakitangan SJDB membersihkan fasiliti industri",
+      en: "SJDB team member cleaning the floor of a landscaped courtyard",
+      ms: "Kakitangan SJDB membersihkan lantai halaman berlandskap",
+    },
+  },
+  {
+    image: "assets/sjdb-carpark-cleaning.webp",
+    position: "38% 15%",
+    caption: {
+      en: "Car park floor cleaning",
+      ms: "Pembersihan lantai tempat letak kereta",
+    },
+    alt: {
+      en: "SJDB team member operating a floor scrubber in a car park",
+      ms: "Kakitangan SJDB menggunakan mesin penyental lantai di tempat letak kereta",
     },
   },
   {
@@ -304,17 +333,6 @@ export const heroSlides: {
       ms: "Kakitangan pembersihan SJDB berkumpul di luar untuk taklimat tapak",
     },
   },
-  {
-    image: "assets/sjdb-courtyard-cleaning.webp",
-    caption: {
-      en: "Care for the spaces your people use every day",
-      ms: "Penjagaan ruang yang digunakan setiap hari",
-    },
-    alt: {
-      en: "SJDB team member cleaning the floor of a landscaped courtyard",
-      ms: "Kakitangan SJDB membersihkan lantai halaman berlandskap",
-    },
-  },
 ];
 
 export const galleryItems: {
@@ -324,10 +342,13 @@ export const galleryItems: {
   caption: BilingualText;
 }[] = [
   {
-    id: "industrial-cleaning",
-    image: "assets/sjdb-industrial-cleaning.webp",
+    id: "carpark-cleaning",
+    image: "assets/sjdb-carpark-cleaning.webp",
     category: "cleaning",
-    caption: { en: "Industrial cleaning", ms: "Pembersihan industri" },
+    caption: {
+      en: "Car park floor cleaning",
+      ms: "Pembersihan lantai tempat letak kereta",
+    },
   },
   {
     id: "commercial-cleaning",
