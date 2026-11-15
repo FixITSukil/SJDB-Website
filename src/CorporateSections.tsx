@@ -259,59 +259,94 @@ export const HomeProjects = ({
   onProject,
 }: LanguageProps & { onProject: (project: Project) => void }) => {
   const t = corporateCopy[language];
-  const featured = [projects[0], additionalProjects[0], projects[3]];
+  const featured = projects.find((project) => project.id === "sqwhere")!;
+  const supporting = [
+    additionalProjects.find((project) => project.id === "by-the-sea")!,
+    projects.find((project) => project.id === "una")!,
+    projects.find((project) => project.id === "dedaun")!,
+    additionalProjects.find((project) => project.id === "hotel-maya")!,
+  ];
+  const viewProject = copy[language].projects.view;
   return (
-    <section className="section-space bg-white">
+    <section
+      className="bg-white py-14 md:border-b md:border-ink/10 lg:py-20"
+      aria-labelledby="featured-projects-title"
+    >
       <div className="site-container">
-        <div className="section-heading" data-reveal>
+        <div className="mb-6 grid items-end gap-3 md:mb-8 md:grid-cols-[1fr_minmax(0,0.8fr)] md:gap-12 lg:grid-cols-[1fr_minmax(0,29rem)]">
+          <h2 id="featured-projects-title" className="featured-projects-title">
+            {t.work.featuredTitle}
+          </h2>
           <div>
-            <p className="eyebrow mb-4">{t.work.eyebrow}</p>
-            <h2>{t.work.title}</h2>
-          </div>
-          <div>
-            <p className="section-description">{t.work.description}</p>
+            <p className="section-description !text-[15px]">{t.work.featuredDescription}</p>
             <a
               href={pageHref("projects", language)}
-              className="mt-4 inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-brand"
+              className="mt-1 inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-brand underline underline-offset-4"
             >
               {t.work.all}
               <ArrowRight aria-hidden="true" />
             </a>
           </div>
         </div>
-        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((project) => (
-            <button
-              key={project.id}
-              type="button"
-              onClick={() => onProject(project)}
-              className="home-card-reveal group text-left"
-              aria-label={`${copy[language].projects.view}: ${project.title}`}
-              data-reveal
-            >
-              <div className="relative mb-5 aspect-[4/3] overflow-hidden bg-mist">
+        <div className="project-showcase">
+          <article className="featured-project project-preview" data-reveal>
+            <div className="featured-project-photo">
+              <img
+                src={featured.image}
+                alt={language === "en" ? "A cleaner wiping lift doors at SqWhere" : "Pekerja pembersihan mengelap pintu lif di SqWhere"}
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+                className="project-preview-image"
+              />
+            </div>
+            <div className="featured-project-detail">
+              <p className="mb-2 text-xs font-semibold tracking-wide text-white/90">{featured.location}</p>
+              <h3 className="featured-project-name">{featured.title}</h3>
+              <p className="mt-2 text-sm text-white/95 sm:text-base">{featured.scope[language]}</p>
+              <button
+                type="button"
+                onClick={() => onProject(featured)}
+                aria-label={`${viewProject}: ${featured.title}`}
+                className="project-preview-action mt-1 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4"
+              >
+                {viewProject}
+                <ArrowUpRight aria-hidden="true" />
+              </button>
+            </div>
+          </article>
+          {supporting.map((project) => (
+            <article key={project.id} className="supporting-project project-preview">
+              <div className="supporting-project-photo">
                 <img
                   src={project.image}
-                  alt={`${project.title} — ${project.scope[language]}`}
+                  alt=""
                   width="800"
                   height="600"
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.025]"
+                  decoding="async"
+                  className="project-preview-image"
+                  style={project.id === "hotel-maya" ? { objectPosition: "center 32%" } : undefined}
                 />
-                <span className="absolute bottom-4 right-4 grid h-11 w-11 place-items-center bg-white text-xl text-ink transition-colors group-hover:bg-brand group-hover:text-white">
-                  <ArrowUpRight aria-hidden="true" />
-                </span>
               </div>
-              <h3 className="mb-2 font-display text-xl font-bold">
-                {project.title}
-              </h3>
-              {project.location ? (
-                <p className="mb-2 text-xs text-muted">{project.location}</p>
-              ) : null}
-              <p className="text-sm leading-relaxed text-muted">
-                {project.scope[language]}
-              </p>
-            </button>
+              <div className="supporting-project-detail">
+                <h3 className="text-base font-bold leading-tight sm:text-lg">
+                  <button
+                    type="button"
+                    onClick={() => onProject(project)}
+                    className="project-preview-action text-left"
+                    aria-label={`${viewProject}: ${project.title}`}
+                  >
+                    {project.title}
+                  </button>
+                </h3>
+                <p className="mt-1 text-xs leading-snug text-white/80">{project.location}</p>
+              </div>
+              <span className="supporting-project-arrow" aria-hidden="true">
+                <ArrowUpRight />
+              </span>
+            </article>
           ))}
         </div>
       </div>

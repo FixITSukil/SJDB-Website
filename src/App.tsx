@@ -119,6 +119,7 @@ const App = ({
     `${pageHref(page, nextLanguage)}${languageSearch}${languageAnchor}`;
 
   useEffect(() => {
+    if (!("IntersectionObserver" in window)) return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -392,9 +393,9 @@ const App = ({
                 ))}
               </div>
             </div>
+            <HomeProjects language={language} onProject={setSelectedProject} />
             <HomeOverview language={language} />
             <HomeServices language={language} />
-            <HomeProjects language={language} onProject={setSelectedProject} />
             <EnquiryBanner language={language} whatsappLink={whatsappLink} />
           </>
         ) : null}
