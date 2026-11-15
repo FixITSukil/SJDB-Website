@@ -9,6 +9,7 @@ import App from "./App";
 import { localizedPageFiles, pageFiles } from "./corporate-content";
 import type { PageId } from "./corporate-content";
 import "./styles.css";
+import "./page-loading.css";
 
 const root = document.getElementById("root")!;
 const currentFile = window.location.pathname.split("/").filter(Boolean).at(-1);
