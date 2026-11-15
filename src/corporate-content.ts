@@ -49,7 +49,7 @@ interface CorporatePageCopy {
     all: string;
     details: string;
   };
-  work: { eyebrow: string; title: string; featuredTitle: string; description: string; all: string };
+  work: { eyebrow: string; title: string; featuredTitle: string; featuredDescription: string; description: string; all: string };
   about: {
     eyebrow: string;
     title: string;
@@ -125,6 +125,7 @@ export const corporateCopy = {
       eyebrow: "OUR PROJECT EXPERIENCE",
       title: "Experience across a range of properties.",
       featuredTitle: "Selected projects",
+      featuredDescription: "See the properties and cleaning work featured in SJDB’s 2026 company profile.",
       description:
         "SJDB’s 2026 company profile documents work such as common-area cleaning at SqWhere in Sungai Buloh and marble polishing at Hotel Maya in Kuala Lumpur.",
       all: "View Our Projects",
@@ -229,6 +230,7 @@ export const corporateCopy = {
       eyebrow: "PENGALAMAN PROJEK KAMI",
       title: "Pengalaman merentasi pelbagai jenis hartanah.",
       featuredTitle: "Projek terpilih",
+      featuredDescription: "Lihat hartanah dan kerja pembersihan yang dipaparkan dalam profil syarikat SJDB 2026.",
       description:
         "Profil syarikat SJDB 2026 memaparkan kerja seperti pembersihan kawasan bersama di SqWhere, Sungai Buloh, dan penggilapan marmar di Hotel Maya, Kuala Lumpur.",
       all: "Lihat Projek Kami",

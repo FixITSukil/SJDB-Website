@@ -261,8 +261,10 @@ export const HomeProjects = ({
   const t = corporateCopy[language];
   const featured = projects.find((project) => project.id === "sqwhere")!;
   const supporting = [
-    additionalProjects.find((project) => project.id === "hotel-maya")!,
+    additionalProjects.find((project) => project.id === "by-the-sea")!,
+    projects.find((project) => project.id === "una")!,
     projects.find((project) => project.id === "dedaun")!,
+    additionalProjects.find((project) => project.id === "hotel-maya")!,
   ];
   const viewProject = copy[language].projects.view;
   return (
@@ -276,7 +278,7 @@ export const HomeProjects = ({
             {t.work.featuredTitle}
           </h2>
           <div>
-            <p className="section-description !text-[15px]">{t.work.description}</p>
+            <p className="section-description !text-[15px]">{t.work.featuredDescription}</p>
             <a
               href={pageHref("projects", language)}
               className="mt-1 inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-brand underline underline-offset-4"
@@ -286,36 +288,36 @@ export const HomeProjects = ({
             </a>
           </div>
         </div>
-        <article className="featured-project project-preview group" data-reveal>
-          <div className="featured-project-photo">
-            <img
-              src={featured.image}
-              alt={language === "en" ? "A cleaner wiping lift doors at SqWhere" : "Pekerja pembersihan mengelap pintu lif di SqWhere"}
-              width="800"
-              height="600"
-              loading="lazy"
-              decoding="async"
-              className="project-preview-image"
-            />
-          </div>
-          <div className="featured-project-detail min-w-0">
-            <h3 className="featured-project-name">{featured.title}</h3>
-            <p className="mt-3 text-base text-white/90">{featured.scope[language]}</p>
-            <p className="mt-2 text-sm text-white/75">{featured.location}</p>
-            <button
-              type="button"
-              onClick={() => onProject(featured)}
-              aria-label={`${viewProject}: ${featured.title}`}
-              className="project-preview-action mt-4 inline-flex min-h-11 items-center gap-3 text-sm font-semibold underline underline-offset-4"
-            >
-              {viewProject}
-              <ArrowUpRight aria-hidden="true" />
-            </button>
-          </div>
-        </article>
-        <div className="mt-4 grid gap-4 md:mt-6 md:grid-cols-2 md:gap-6">
+        <div className="project-showcase">
+          <article className="featured-project project-preview" data-reveal>
+            <div className="featured-project-photo">
+              <img
+                src={featured.image}
+                alt={language === "en" ? "A cleaner wiping lift doors at SqWhere" : "Pekerja pembersihan mengelap pintu lif di SqWhere"}
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+                className="project-preview-image"
+              />
+            </div>
+            <div className="featured-project-detail">
+              <p className="mb-2 text-xs font-semibold tracking-wide text-white/90">{featured.location}</p>
+              <h3 className="featured-project-name">{featured.title}</h3>
+              <p className="mt-2 text-sm text-white/95 sm:text-base">{featured.scope[language]}</p>
+              <button
+                type="button"
+                onClick={() => onProject(featured)}
+                aria-label={`${viewProject}: ${featured.title}`}
+                className="project-preview-action mt-1 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4"
+              >
+                {viewProject}
+                <ArrowUpRight aria-hidden="true" />
+              </button>
+            </div>
+          </article>
           {supporting.map((project) => (
-            <article key={project.id} className="supporting-project project-preview group">
+            <article key={project.id} className="supporting-project project-preview">
               <div className="supporting-project-photo">
                 <img
                   src={project.image}
@@ -325,10 +327,11 @@ export const HomeProjects = ({
                   loading="lazy"
                   decoding="async"
                   className="project-preview-image"
+                  style={project.id === "hotel-maya" ? { objectPosition: "center 32%" } : undefined}
                 />
               </div>
-              <div className="min-w-0 px-3 py-4 sm:px-5">
-                <h3 className="mb-1 text-lg font-bold leading-tight">
+              <div className="supporting-project-detail">
+                <h3 className="text-base font-bold leading-tight sm:text-lg">
                   <button
                     type="button"
                     onClick={() => onProject(project)}
@@ -338,8 +341,7 @@ export const HomeProjects = ({
                     {project.title}
                   </button>
                 </h3>
-                <p className="text-sm text-muted">{project.scope[language]}</p>
-                <p className="mt-1 text-xs text-muted">{project.location}</p>
+                <p className="mt-1 text-xs leading-snug text-white/80">{project.location}</p>
               </div>
               <span className="supporting-project-arrow" aria-hidden="true">
                 <ArrowUpRight />
