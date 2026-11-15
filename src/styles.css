@@ -177,6 +177,51 @@
   .corporate-promise {
     @apply border-b border-ink/10 bg-mist py-7;
   }
+  .featured-projects-title,
+  .featured-project-name {
+    @apply font-display font-bold leading-none tracking-[-0.02em];
+  }
+  .featured-projects-title {
+    font-size: clamp(2.4rem, 4vw, 3.75rem);
+  }
+  .featured-project-name {
+    font-size: clamp(2.25rem, 4vw, 3.75rem);
+  }
+  .project-preview {
+    @apply relative grid min-w-0;
+  }
+  .featured-project {
+    @apply bg-ink text-white md:grid-cols-[1.64fr_1fr] md:items-center;
+  }
+  .featured-project-photo {
+    @apply relative aspect-[8/5] self-stretch overflow-hidden bg-[#102638] md:aspect-[2/1];
+  }
+  .project-preview-image {
+    @apply absolute inset-0 h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-500;
+  }
+  .featured-project-detail {
+    @apply p-6 sm:p-9 lg:p-12;
+  }
+  .featured-project-detail::before {
+    @apply mb-4 block h-[3px] w-10 bg-[#e0362c] md:mb-6;
+    content: "";
+  }
+  .supporting-project {
+    @apply grid-cols-[minmax(5.5rem,37%)_minmax(0,1fr)] items-center bg-mist sm:grid-cols-[9.5rem_minmax(0,1fr)];
+  }
+  .supporting-project-photo {
+    @apply relative min-h-28 self-stretch overflow-hidden bg-ink/10;
+  }
+  .project-preview-action::after {
+    @apply absolute inset-0 z-10;
+    content: "";
+  }
+  .featured-project .project-preview-action:focus-visible {
+    outline-color: white;
+  }
+  .supporting-project-arrow {
+    @apply pointer-events-none absolute bottom-2 left-2 grid h-8 w-8 place-items-center bg-white text-base text-ink transition-colors md:h-10 md:w-10;
+  }
   .corp-hero {
     @apply relative isolate overflow-hidden bg-ink text-white;
     min-height: 600px;
@@ -241,6 +286,12 @@
   opacity: 0.85;
 }
 @media (hover: hover) and (pointer: fine) {
+  .supporting-project:hover .supporting-project-arrow {
+    @apply bg-brand text-white;
+  }
+  .supporting-project:hover .project-preview-action {
+    @apply underline underline-offset-4;
+  }
   .corporate-nav-link:hover::after {
     opacity: 0.85;
   }
@@ -251,6 +302,9 @@
   }
 }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-preview:hover .project-preview-image {
+    transform: scale(1.025);
+  }
   :is(.button-primary, .button-outline, .whatsapp-float, .service-tab, .project-filter, a.group, button.group):hover:not(:disabled) {
     translate: 0 -2px;
   }
@@ -288,8 +342,11 @@
   opacity: 1;
 }
 @media (prefers-reduced-motion: no-preference) {
-  [data-reveal].is-visible {
+  [data-reveal].is-visible:not(.featured-project) {
     animation: section-reveal 0.55s ease-out both;
+  }
+  .featured-project.is-visible .featured-project-photo {
+    animation: featured-project-reveal 560ms cubic-bezier(0.22, 1, 0.36, 1);
   }
   [data-reveal].home-card-reveal.is-visible {
     animation: home-card-lift 0.35s ease-out;
@@ -308,6 +365,16 @@
   }
   .hero-copy > :nth-child(4) {
     animation-delay: 180ms;
+  }
+}
+@keyframes featured-project-reveal {
+  from {
+    clip-path: inset(0 9% 0 0);
+    opacity: 0.78;
+  }
+  to {
+    clip-path: inset(0);
+    opacity: 1;
   }
 }
 @keyframes hero-entrance {
