@@ -36,6 +36,10 @@ import {
 import type { PageId } from "./corporate-content";
 import { contact } from "./business";
 import {
+  PageLoadingFeedback,
+  usePageLoadingFeedback,
+} from "./PageLoadingFeedback";
+import {
   CorporateHero,
   HomeOverview,
   HomeServices,
@@ -83,6 +87,7 @@ const App = ({
     url: string;
     channel: string;
   } | null>(null);
+  const { visible: isPageLoading, startLoading } = usePageLoadingFeedback();
   const projectDialog = useRef<HTMLDialogElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
   const t = copy[language];
@@ -152,6 +157,7 @@ const App = ({
   };
   const handleEnquire = (service: string) => {
     if (page !== "contact") {
+      startLoading();
       window.location.href = `${pageHref("contact", language)}?service=${encodeURIComponent(service)}`;
       return;
     }
@@ -199,6 +205,7 @@ const App = ({
 
   return (
     <>
+      <PageLoadingFeedback visible={isPageLoading} language={language} />
       <a className="skip-link" href="#main">
         {language === "en" ? "Skip to content" : "Langkau ke kandungan"}
       </a>

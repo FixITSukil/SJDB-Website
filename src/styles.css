@@ -133,7 +133,7 @@
     @apply mt-2 block min-h-12 w-full rounded-none border border-ink/20 bg-white px-4 py-3 text-sm font-normal text-ink transition-colors placeholder:text-muted/70 hover:border-ink/40 focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand;
   }
   .whatsapp-float {
-    @apply fixed bottom-20 right-5 z-30 flex min-h-14 min-w-14 items-center justify-center gap-3 rounded-full border-4 border-white bg-[#176947] p-3 text-white shadow-[0_4px_24px_#10263830] transition-transform hover:-translate-y-1 hover:bg-[#105738] sm:bottom-6 sm:right-7 sm:px-5;
+    @apply fixed bottom-20 right-5 z-30 flex min-h-14 min-w-14 items-center justify-center gap-3 rounded-full border-4 border-white bg-[#176947] p-3 text-white shadow-[0_4px_24px_#10263830] hover:bg-[#105738] sm:bottom-6 sm:right-7 sm:px-5;
   }
   .project-dialog {
     @apply m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-[850px] overflow-auto border-0 bg-transparent p-0 text-ink;
@@ -217,6 +217,66 @@
   }
 }
 
+:is(.button-primary, .button-outline, .corporate-nav-quote, .whatsapp-float, .service-tab, .project-filter, a.group, button.group, .corp-hero button, .corporate-header button) {
+  transition-property: translate, scale, filter, background-color, border-color, box-shadow, color;
+  transition-duration: 160ms;
+  transition-timing-function: ease-out;
+}
+:is(.button-primary, .button-outline, .corporate-nav-quote, .whatsapp-float, .service-tab, .project-filter, a.group, button.group, .corp-hero button, .corporate-header button, #mobile-navigation a):active:not(:disabled) {
+  filter: brightness(0.94);
+}
+.corporate-nav-link {
+  position: relative;
+}
+.corporate-nav-link::after {
+  position: absolute;
+  inset: auto 1.25rem 0.65rem;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+}
+.corporate-nav-link:focus-visible::after {
+  opacity: 0.85;
+}
+@media (hover: hover) and (pointer: fine) {
+  .corporate-nav-link:hover::after {
+    opacity: 0.85;
+  }
+  .contact-link:hover,
+  .language-button:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.24em;
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  :is(.button-primary, .button-outline, .whatsapp-float, .service-tab, .project-filter, a.group, button.group):hover:not(:disabled) {
+    translate: 0 -2px;
+  }
+  .corporate-nav-link::after {
+    scale: 0 1;
+    transform-origin: left;
+    transition: scale 170ms ease-out, opacity 170ms ease-out;
+  }
+  .corporate-nav-link:is(:hover, :focus-visible)::after {
+    scale: 1 1;
+  }
+  :is(.button-primary, .button-outline, .corporate-nav-quote) svg {
+    transition: translate 160ms ease-out;
+  }
+  :is(.button-primary, .button-outline, .corporate-nav-quote):hover svg {
+    translate: 2px 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  :is(.button-primary, .button-outline, .corporate-nav-quote, .whatsapp-float, .service-tab, .project-filter, a.group, button.group, .corp-hero button, .corporate-header button):active:not(:disabled) {
+    translate: 0 0;
+    scale: 0.98;
+    transition-duration: 80ms;
+  }
+}
+
 [data-reveal] {
   opacity: 1;
 }
@@ -230,6 +290,12 @@
 @media (prefers-reduced-motion: no-preference) {
   [data-reveal].is-visible {
     animation: section-reveal 0.55s ease-out both;
+  }
+  [data-reveal].home-card-reveal.is-visible {
+    animation: home-card-lift 0.35s ease-out;
+  }
+  .hero-slide-caption {
+    animation: section-reveal 0.32s ease-out;
   }
   .hero-copy > * {
     animation: hero-entrance 0.55s cubic-bezier(0.2, 0.6, 0.2, 1) both;
@@ -260,6 +326,14 @@
   }
   to {
     opacity: 1;
+  }
+}
+@keyframes home-card-lift {
+  from {
+    transform: translateY(8px);
+  }
+  to {
+    transform: translateY(0);
   }
 }
 @keyframes card-enter {

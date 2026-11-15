@@ -1,0 +1,30 @@
+.page-loading {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: 4px;
+  overflow: hidden;
+  background: #f2d7d5;
+  pointer-events: none;
+}
+
+.page-loading-indicator {
+  width: 35%;
+  height: 100%;
+  background: #d92c24;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-loading-indicator {
+    animation: page-loading-sweep 1s ease-in-out infinite;
+  }
+}
+
+@keyframes page-loading-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(290%);
+  }
+}

@@ -34,13 +34,15 @@ const serviceImages: Record<string, string> = {
 };
 
 export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [selectedSlide, setSelectedSlide] = useState<number | null>(null);
+  const activeSlide = selectedSlide ?? 0;
   const t = corporateCopy[language];
   const slide = heroSlides[activeSlide];
 
   const handleSlide = (offset: number) => {
-    setActiveSlide(
-      (current) => (current + offset + heroSlides.length) % heroSlides.length,
+    if (offset === 0) return;
+    setSelectedSlide(
+      (current) => ((current ?? 0) + offset + heroSlides.length) % heroSlides.length,
     );
   };
   const handleKeys = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -108,7 +110,12 @@ export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
             aria-live="polite"
             aria-atomic="true"
           >
-            {slide.caption[language]}
+            <span
+              key={slide.image}
+              className={selectedSlide !== null ? "hero-slide-caption" : undefined}
+            >
+              {slide.caption[language]}
+            </span>
           </p>
           <div
             className="flex w-fit flex-wrap items-center gap-2 bg-ink/90"
@@ -131,7 +138,7 @@ export const CorporateHero = ({ language, whatsappLink }: EnquiryProps) => {
                 <button
                   key={item.image}
                   type="button"
-                  onClick={() => setActiveSlide(index)}
+                  onClick={() => handleSlide(index - activeSlide)}
                   aria-label={`${t.hero.slideLabel} ${index + 1}: ${item.caption[language]}`}
                   aria-pressed={index === activeSlide}
                   className="grid h-11 w-11 place-items-center"
@@ -213,8 +220,9 @@ export const HomeServices = ({ language }: LanguageProps) => {
           {serviceGroups.map((group) => (
             <a
               key={group.id}
-              className="group flex flex-col bg-white shadow-[0_4px_18px_#082b4b08] transition-shadow hover:shadow-[0_10px_25px_#082b4b16]"
+              className="home-card-reveal group flex flex-col bg-white shadow-[0_4px_18px_#082b4b08] transition-shadow hover:shadow-[0_10px_25px_#082b4b16]"
               href={`${pageHref("services", language)}?category=${group.id}`}
+              data-reveal
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img
@@ -277,8 +285,9 @@ export const HomeProjects = ({
               key={project.id}
               type="button"
               onClick={() => onProject(project)}
-              className="group text-left"
+              className="home-card-reveal group text-left"
               aria-label={`${copy[language].projects.view}: ${project.title}`}
+              data-reveal
             >
               <div className="relative mb-5 aspect-[4/3] overflow-hidden bg-mist">
                 <img
